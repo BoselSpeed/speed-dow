@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#2563eb" />
+
+    <title>تحميل الملف</title>
+    <meta name="description" content="قم بتحميل الملف مباشرة. متوفر بأحدث إصدار، مع سجل التحديثات الكامل." />
+    <link rel="canonical" href="https://example.com/" />
+
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="تحميل الملف" />
+    <meta property="og:description" content="قم بتحميل الملف مباشرة. متوفر بأحدث إصدار، مع سجل التحديثات الكامل." />
+    <meta property="og:image" content="/favicon.svg" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="تحميل الملف" />
+    <meta name="twitter:description" content="قم بتحميل الملف مباشرة. متوفر بأحدث إصدار." />
+
+    <script>
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('theme')
+          if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
