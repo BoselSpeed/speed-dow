@@ -1,6 +1,5 @@
 node_modules
 dist
-site
 *.tsbuildinfo
 *.local
 .DS_Store
