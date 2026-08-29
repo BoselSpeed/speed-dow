@@ -4,6 +4,7 @@ import { updates } from './data/updates'
 import ThemeToggle from './components/ThemeToggle'
 import DownloadCard from './components/DownloadCard'
 import UpdatesList from './components/UpdatesList'
+import AdSlot from './components/AdSlot'
 
 function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
@@ -41,6 +42,10 @@ function App() {
       <main className="px-6 pb-12 max-w-4xl mx-auto">
         <section className="flex justify-center">
           <DownloadCard info={fileInfo} />
+        </section>
+
+        <section className="mt-8">
+          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
         </section>
 
         <section className="mt-12">

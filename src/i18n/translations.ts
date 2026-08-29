@@ -13,6 +13,7 @@ export interface Translation {
   themeLightTitle: string
   themeDarkLabel: string
   themeLightLabel: string
+  adLabel: string
 }
 
 export const translations: Record<Lang, Translation> = {
@@ -29,6 +30,7 @@ export const translations: Record<Lang, Translation> = {
     themeLightTitle: 'الوضع الفاتح',
     themeDarkLabel: 'تفعيل الوضع الداكن',
     themeLightLabel: 'تفعيل الوضع الفاتح',
+    adLabel: 'إعلان',
   },
 }
 
