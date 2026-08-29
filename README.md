@@ -7,7 +7,7 @@
 ## التقنيات
 
 - React + TypeScript
-- Vite (Static build → `dist/`)
+- Vite (Static build → `site/`)
 - Tailwind CSS
 - وضع ليلي/نهاري (محفوظ في LocalStorage)
 
@@ -71,10 +71,10 @@ export const fileInfo = {
 
 ```bash
 npm install
-npm run build      # ينتج مجلد dist/
+npm run build      # ينتج مجلد site/ كاملًا (موقع Static جاهز)
 ```
 
-انشر محتويات مجلد `dist/` على أي استضافة تدعم المواقع Static (Netlify، Vercel، GitHub Pages، VPS…).
+انشر محتويات مجلد `site/` — وهو مجلد **مستقل** يحتوي الموقع Static كاملًا (HTML + CSS + JS + ملف التحميل) — على أي استضافة تدعم المواقع Static (Netlify، Vercel، GitHub Pages، VPS…).
 
 ## تخصيص إضافي
 
