@@ -2,7 +2,7 @@
 
 موقع **Static بالكامل** لعرض وتحميل ملف واحد فقط، بدون أي Backend أو قاعدة بيانات أو حسابات.
 
-> ⚠️ قبل النشر: استبدل ملف التحميل التجريبي (`my-file.zip`) بملفك الحقيقي، وعدّل بيانات `src/data/fileInfo.ts` و `src/data/updates.ts`، واستبدل نطاق `example.com` في `index.html` و `robots.txt` و `sitemap.xml`.
+> ⚠️ قبل النشر: استبدل نطاق `example.com` في `index.html` و `robots.txt` و `sitemap.xml`، وحدّث بيانات `src/data/fileInfo.ts` و `src/data/updates.ts` عند إصدار نسخة جديدة.
 
 ## التقنيات
 
@@ -16,7 +16,7 @@
 ```
 ├── public/
 │   ├── downloads/
-│   │   └── my-file.zip      ← ضع ملفك هنا (بنفس الاسم)
+│   │   └── تطبيق-الفقه.apk   ← ملف التحميل (استبدله بنفس الاسم)
 │   ├── favicon.svg
 │   ├── robots.txt
 │   └── sitemap.xml
@@ -35,9 +35,9 @@
 
 ### 1) وضع ملف التحميل
 
-استبدل الملف الموجود داخل `public/downloads/` بملفك الحقيقي **بنفس الاسم** الذي حددته في `fileInfo.ts` (حقل `fileName`).
+استبدل الملف الموجود داخل `public/downloads/` بملفك الجديد **بنفس الاسم** الذي حددته في `fileInfo.ts` (حقل `fileName`، حاليًا `تطبيق-الفقه.apk`).
 
-> يوجد حاليًا ملف Placeholder بالاسم `my-file.zip` ليعمل الموقع فورًا، استبدله عندما تجهّز ملفك.
+> الملف الحالي هو نسخة APK من «تطبيق الفقه» بحجم 85.5 MB.
 
 ### 2) تعديل معلومات الملف
 
@@ -45,13 +45,13 @@
 
 ```ts
 export const fileInfo = {
-  name: 'اسم الملف',
-  description: 'وصف مختصر',
-  version: '2.0.0',
-  size: '250 MB',
-  fileType: 'ZIP',
+  name: 'تطبيق الفقه',
+  description: 'تطبيق الفقه بأحدث إصدار، متاح للتحميل المباشر.',
+  version: '1.0.0',
+  size: '85.5 MB',
+  fileType: 'APK',
   lastUpdated: '29 أغسطس 2026',
-  fileName: 'my-file.zip', // ← يجب أن يطابق اسم الملف داخل public/downloads/
+  fileName: 'تطبيق-الفقه.apk', // ← يجب أن يطابق اسم الملف داخل public/downloads/
 }
 ```
 
