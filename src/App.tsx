@@ -49,7 +49,15 @@ function App() {
         </section>
 
         <section className="mt-12">
+          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
+        </section>
+
+        <section className="mt-12">
           <UpdatesList updates={updates} />
+        </section>
+
+        <section className="mt-12">
+          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
         </section>
       </main>
     </div>
