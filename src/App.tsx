@@ -44,6 +44,10 @@ function App() {
           <DownloadCard info={fileInfo} />
         </section>
 
+        <section className="mt-12">
+          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
+        </section>
+
         <section className="mt-12 flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-8">
           <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
 
