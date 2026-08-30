@@ -3,6 +3,7 @@ import { fileInfo } from './data/fileInfo'
 import { updates } from './data/updates'
 import ThemeToggle from './components/ThemeToggle'
 import DownloadCard from './components/DownloadCard'
+import DownloadGuide from './components/DownloadGuide'
 import UpdatesList from './components/UpdatesList'
 import AdSlot from './components/AdSlot'
 
@@ -42,6 +43,10 @@ function App() {
       <main className="px-6 pb-12 max-w-4xl mx-auto">
         <section className="flex justify-center">
           <DownloadCard info={fileInfo} />
+        </section>
+
+        <section className="mt-8 flex justify-center">
+          <DownloadGuide />
         </section>
 
         <section className="mt-12">
