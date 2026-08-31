@@ -1,66 +1,57 @@
 import { useI18n } from '../i18n/I18nContext'
-import Reveal from './Reveal'
 import { SITE_CONFIG } from '../data/siteConfig'
+import Reveal from './Reveal'
 
-export default function HowTo({ onOpenInstall }: { onOpenInstall: () => void }) {
+const STEPS = [
+  (t: any) => ({ num: '01', title: t.howStep1Title, desc: t.howStep1Desc }),
+  (t: any) => ({ num: '02', title: t.howStep2Title, desc: t.howStep2Desc }),
+  (t: any) => ({ num: '03', title: t.howStep3Title, desc: t.howStep3Desc }),
+  (t: any) => ({ num: '04', title: t.howStep4Title, desc: t.howStep4Desc }),
+  (t: any) => ({ num: '05', title: t.howStep5Title, desc: t.howStep5Desc }),
+]
+
+export default function HowTo() {
   const { t } = useI18n()
-
-  const steps = [
-    { title: t.howStep1Title, desc: t.howStep1Desc, icon: '⬇️' },
-    { title: t.howStep2Title, desc: t.howStep2Desc, icon: '📲' },
-    { title: t.howStep3Title, desc: t.howStep3Desc, icon: '📚' },
-    { title: t.howStep4Title, desc: t.howStep4Desc, icon: '🗂️' },
-    { title: t.howStep5Title, desc: t.howStep5Desc, icon: '📖' },
-  ]
+  const steps = STEPS.map((fn) => fn(t))
 
   return (
-    <section id="how" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6">
-      <Reveal>
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--color-primary)' }}>{t.howEyebrow}</span>
-          <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl" style={{ color: 'var(--color-text)' }}>{t.howTitle}</h2>
-          <p className="mt-4 text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t.howSubtitle}</p>
-        </div>
-      </Reveal>
+    <section id="how" className="relative py-20 sm:py-28">
+      <div className="geo-line h-px w-full" style={{ top: 0 }} aria-hidden="true" />
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--color-text-secondary)' }}>{t.howEyebrow}</span>
+            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl" style={{ color: 'var(--color-text)' }}>{t.howTitle}</h2>
+            <p className="mt-4 text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t.howSubtitle}</p>
+          </div>
+        </Reveal>
 
-      <div className="relative mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-        <div className="absolute left-0 right-0 top-1/2 hidden h-0.5 -translate-y-1/2 lg:block" style={{ backgroundColor: 'var(--color-border)' }} aria-hidden="true" />
-        {steps.map((s, i) => (
-          <Reveal key={i} delay={i * 110}>
-            <div className="relative flex h-full flex-col items-center rounded-2xl p-5 text-center card">
-              <div
-                className="relative z-10 mb-3 flex h-14 w-14 items-center justify-center rounded-full text-2xl"
-                style={{ backgroundColor: 'var(--color-surface-2)' }}
-              >
-                <span>{s.icon}</span>
-                <span
-                  className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold text-white"
-                  style={{ backgroundColor: 'var(--color-primary)' }}
-                >
-                  {i + 1}
-                </span>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {steps.map((s, i) => (
+            <Reveal key={s.num} delay={i * 100}>
+              <div className="card h-full rounded-2xl p-6 text-center">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold" style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)', color: 'var(--color-text)' }}>
+                  {s.num}
+                </div>
+                <h3 className="text-base font-bold" style={{ color: 'var(--color-text)' }}>{s.title}</h3>
+                <p className="mt-2 text-sm leading-[1.8]" style={{ color: 'var(--color-text-secondary)' }}>{s.desc}</p>
               </div>
-              <h3 className="text-base font-bold" style={{ color: 'var(--color-text)' }}>{s.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal delay={120}>
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <a href={SITE_CONFIG.downloadUrl} download className="btn-primary rounded-xl px-6 py-3 font-bold">
-            {t.heroDownload}
-          </a>
-          <button
-            onClick={onOpenInstall}
-            className="rounded-xl px-6 py-3 font-bold"
-            style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-soft)' }}
-          >
-            {t.installBtn}
-          </button>
+            </Reveal>
+          ))}
         </div>
-      </Reveal>
+
+        <Reveal delay={180}>
+          <div className="mt-10 text-center">
+            <a
+              href={SITE_CONFIG.downloadUrl}
+              download
+              className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-lg font-bold"
+            >
+              {t.howStep1Title}
+            </a>
+          </div>
+        </Reveal>
+      </div>
     </section>
   )
 }

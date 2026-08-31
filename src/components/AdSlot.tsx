@@ -39,8 +39,8 @@ export default function AdSlot({ adKey, format = 'iframe', width = 160, height =
 
   return (
     <aside
-      className="mx-auto flex w-full max-w-[200px] flex-col items-center gap-2 rounded-2xl border p-3"
-      style={{ backgroundColor: 'var(--color-surface)', borderColor: 'var(--color-border)' }}
+      className="mx-auto flex w-full max-w-[200px] flex-col items-center gap-2 rounded-2xl p-3"
+      style={{ backgroundColor: 'var(--color-surface)', border: '1px solid var(--color-border)' }}
     >
       <span className="text-xs font-medium tracking-wide" style={{ color: 'var(--color-text-secondary)' }}>
         {t.adLabel}

@@ -30,7 +30,7 @@ export default function Cta({ onOpenInstall }: { onOpenInstall: () => void }) {
         if (p.y < -5) p.y = canvas.height + 5
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(255,255,255,0.5)'
+        ctx.fillStyle = 'rgba(255,255,255,0.4)'
         ctx.fill()
       })
       raf = requestAnimationFrame(draw)
@@ -49,21 +49,21 @@ export default function Cta({ onOpenInstall }: { onOpenInstall: () => void }) {
   }, [])
 
   return (
-    <section className="py-20">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <Reveal>
           <div
-            className="relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-12"
-            style={{ background: 'linear-gradient(135deg, #000000, #1e293b 55%, #3b82f6 130%)' }}
+            className="relative overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-12"
+            style={{ background: 'linear-gradient(135deg, #000000, #111827 55%, #1e293b 100%)' }}
           >
             <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />
             <div className="relative">
-              <span className="inline-block rounded-full px-4 py-1.5 text-sm font-bold text-white" style={{ backgroundColor: 'rgba(255,255,255,0.18)' }}>
+              <span className="inline-block rounded-full px-4 py-1.5 text-sm font-bold text-white" style={{ backgroundColor: 'rgba(255,255,255,0.12)' }}>
                 {t.ctaEyebrow}
               </span>
-              <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">{t.ctaTitle}</h2>
-              <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">{t.ctaSubtitle}</p>
-              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+              <h2 className="mt-5 text-3xl font-extrabold text-white sm:text-4xl">{t.ctaTitle}</h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-white/80">{t.ctaSubtitle}</p>
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a
                   href={SITE_CONFIG.downloadUrl}
                   download
@@ -76,11 +76,12 @@ export default function Cta({ onOpenInstall }: { onOpenInstall: () => void }) {
                 <button
                   onClick={onOpenInstall}
                   className="inline-flex items-center gap-2 rounded-xl px-8 py-4 text-lg font-bold text-white transition-colors hover:bg-white/10"
+                  style={{ border: '1px solid rgba(255,255,255,0.2)' }}
                 >
                   {t.installBtn}
                 </button>
               </div>
-              <p className="mt-5 text-sm text-white/70">{t.ctaNote}</p>
+              <p className="mt-5 text-sm text-white/60">{t.ctaNote}</p>
             </div>
           </div>
         </Reveal>

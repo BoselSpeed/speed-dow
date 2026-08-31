@@ -49,23 +49,29 @@ function App() {
           <DownloadWarning />
         </div>
 
-        <AdSlot adKey={AD_KEY} />
+        <div className="flex justify-center">
+          <AdSlot adKey={AD_KEY} />
+        </div>
 
         <About />
 
-        <AdSlot adKey={AD_KEY} />
-
         <Features />
 
-        <AdSlot adKey={AD_KEY} />
+        <div className="flex justify-center">
+          <AdSlot adKey={AD_KEY} />
+        </div>
 
         <Contents />
         <Volumes convertData={convertData} />
         <Screenshots />
 
-        <HowTo onOpenInstall={() => setShowInstall(true)} />
+        <HowTo />
 
         <Faq />
+
+        <div className="flex justify-center">
+          <AdSlot adKey={AD_KEY} />
+        </div>
 
         <Cta onOpenInstall={() => setShowInstall(true)} />
       </main>

@@ -2,36 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-bg: #ffffff;
-  --color-surface: #f9fafb;
-  --color-surface-2: #f3f4f6;
-  --color-text: #111827;
-  --color-text-secondary: #4b5563;
-  --color-border: #e5e7eb;
-  --color-primary: #000000;
-  --color-primary-hover: #111827;
-  --color-primary-soft: rgba(0, 0, 0, 0.06);
-  --color-accent: #3b82f6;
-  --color-accent-soft: rgba(59, 130, 246, 0.1);
-  --shadow-card: 0 10px 30px -12px rgba(0, 0, 0, 0.12);
-}
-
-.dark {
-  --color-bg: #0f172a;
-  --color-surface: #1e293b;
-  --color-surface-2: #334155;
-  --color-text: #f8fafc;
-  --color-text-secondary: #94a3b8;
-  --color-border: #334155;
-  --color-primary: #f8fafc;
-  --color-primary-hover: #e2e8f0;
-  --color-primary-soft: rgba(255, 255, 255, 0.08);
-  --color-accent: #60a5fa;
-  --color-accent-soft: rgba(96, 165, 250, 0.15);
-  --shadow-card: 0 14px 34px -14px rgba(0, 0, 0, 0.5);
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -40,40 +10,75 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-text);
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-family: system-ui, 'Segoe UI', Tahoma, Arial, sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    font-family: 'Cairo', system-ui, -apple-system, Segoe UI, Tahoma, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::selection {
     background-color: var(--color-primary-soft);
+    color: var(--color-text);
   }
+}
+
+:root {
+  --color-bg: #ffffff;
+  --color-surface: #fafafa;
+  --color-surface-2: #f3f4f6;
+  --color-text: #000000;
+  --color-text-secondary: #4b5563;
+  --color-border: #e5e7eb;
+  --color-primary: #000000;
+  --color-primary-hover: #111827;
+  --color-primary-soft: rgba(0, 0, 0, 0.06);
+  --color-accent: #3b82f6;
+  --color-accent-soft: rgba(59, 130, 246, 0.08);
+  --shadow-card: 0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 12px 28px -10px rgba(0, 0, 0, 0.08);
+  --shadow-elevated: 0 20px 40px -20px rgba(0, 0, 0, 0.15);
+}
+
+.dark {
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-surface-2: #1a1a1a;
+  --color-text: #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-border: #262626;
+  --color-primary: #ffffff;
+  --color-primary-hover: #e5e7eb;
+  --color-primary-soft: rgba(255, 255, 255, 0.06);
+  --color-accent: #60a5fa;
+  --color-accent-soft: rgba(96, 165, 250, 0.1);
+  --shadow-card: 0 1px 2px 0 rgba(0, 0, 0, 0.3), 0 12px 28px -10px rgba(0, 0, 0, 0.5);
+  --shadow-elevated: 0 20px 40px -20px rgba(0, 0, 0, 0.6);
 }
 
 @layer components {
   .btn-primary {
     background-color: var(--color-primary);
-    color: #ffffff;
-    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    color: var(--color-bg);
+    transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.3s ease;
   }
   .btn-primary:hover {
     background-color: var(--color-primary-hover);
     transform: translateY(-2px);
-    box-shadow: 0 12px 24px -10px var(--color-primary);
+    box-shadow: var(--shadow-elevated);
   }
 
   .card {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.35s ease, box-shadow 0.35s ease;
   }
   .card-hover:hover {
     transform: translateY(-6px);
-    box-shadow: 0 22px 40px -16px var(--color-primary);
+    box-shadow: var(--shadow-elevated);
   }
 
   .gradient-text {
-    background: linear-gradient(120deg, var(--color-primary), var(--color-accent));
+    background: linear-gradient(135deg, var(--color-text), var(--color-text-secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -88,7 +93,7 @@
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -109,7 +114,7 @@
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-12px);
+    transform: translateY(-14px);
   }
 }
 @keyframes modalBackdropIn {
@@ -142,13 +147,13 @@
 }
 
 .anim-fade-up {
-  animation: fadeUp 0.7s ease both;
+  animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 .anim-fade-in {
-  animation: fadeIn 0.7s ease both;
+  animation: fadeIn 0.8s ease both;
 }
 .anim-float {
-  animation: float 5s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 .anim-delay-1 {
   animation-delay: 0.1s;
@@ -162,8 +167,8 @@
 
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.is-visible {
   opacity: 1;
@@ -171,11 +176,36 @@
 }
 
 .modal-backdrop {
-  animation: modalBackdropIn 0.2s ease-out;
+  animation: modalBackdropIn 0.25s ease-out;
 }
 .modal-in {
-  animation: modalPopIn 0.28s cubic-bezier(0.2, 0.8, 0.3, 1);
+  animation: modalPopIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .lightbox-in {
-  animation: lightboxIn 0.22s ease-out;
+  animation: lightboxIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---- Geometric Backgrounds ---- */
+.geo-grid {
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.geo-dots {
+  background-image: radial-gradient(circle, var(--color-border) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.geo-circle {
+  position: absolute;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  opacity: 0.6;
+  pointer-events: none;
+}
+.geo-line {
+  position: absolute;
+  background: var(--color-border);
+  opacity: 0.5;
+  pointer-events: none;
 }

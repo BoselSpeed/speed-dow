@@ -6,16 +6,15 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
-    let stored: string | null = null
     try {
-      stored = localStorage.getItem('theme')
+      const stored = localStorage.getItem('theme')
+      if (stored === 'dark' || stored === 'light') {
+        setTheme(stored)
+        document.documentElement.classList.toggle('dark', stored === 'dark')
+      }
     } catch {
       /* ignore */
     }
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initial = stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light'
-    setTheme(initial)
-    if (initial === 'dark') document.documentElement.classList.add('dark')
   }, [])
 
   const toggle = () => {
@@ -26,15 +25,14 @@ export default function ThemeToggle() {
     } catch {
       /* ignore */
     }
-    if (next === 'dark') document.documentElement.classList.add('dark')
-    else document.documentElement.classList.remove('dark')
+    document.documentElement.classList.toggle('dark', next === 'dark')
   }
 
   return (
     <button
       onClick={toggle}
-      className="rounded-lg p-2 transition-colors"
-      style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text)' }}
+      className="rounded-lg p-2 transition-colors duration-200"
+      style={{ color: 'var(--color-text)', backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
       aria-label={theme === 'light' ? t.themeDarkLabel : t.themeLightLabel}
       title={theme === 'light' ? t.themeDarkTitle : t.themeLightTitle}
     >

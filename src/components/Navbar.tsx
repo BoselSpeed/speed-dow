@@ -9,7 +9,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -22,29 +22,25 @@ export default function Navbar() {
     { href: '#faq', label: t.navFaq },
   ]
 
-  const barStyle = scrolled
-    ? { backgroundColor: 'var(--color-bg)', borderBottom: '1px solid var(--color-border)', boxShadow: '0 6px 24px -18px rgba(22,22,255,.4)' }
-    : { backgroundColor: 'transparent' }
-
   return (
     <header
-      className="fixed inset-x-0 top-0 z-40 transition-all"
-      style={barStyle}
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${scrolled ? 'border-b border-[var(--color-border)]' : ''}`}
+      style={{ backgroundColor: scrolled ? 'var(--color-bg)' : 'transparent', backdropFilter: scrolled ? 'blur(12px)' : 'none' }}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
-        <a href="#home" className="flex items-center gap-2.5">
-          <img src="/assets/icons/app-icon-512.png" alt={t.heroTitle} className="h-9 w-9 rounded-xl" />
-          <span className="text-lg font-bold" style={{ color: 'var(--color-text)' }}>{t.heroTitle}</span>
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8 lg:px-10">
+        <a href="#home" className="flex items-center gap-3 group">
+          <img src="/assets/icons/app-icon-192.png" alt={t.heroTitle} className="h-9 w-9 rounded-xl object-cover transition-transform duration-300 group-hover:scale-105" />
+          <span className="text-lg font-bold tracking-tight" style={{ color: scrolled ? 'var(--color-text)' : 'var(--color-text)' }}>{t.heroTitle}</span>
         </a>
 
-        <div className="hidden items-center gap-6 lg:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium transition-colors"
+              className="text-sm font-medium transition-colors duration-200"
               style={{ color: 'var(--color-text-secondary)' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-primary)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-text)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-text-secondary)')}
             >
               {l.label}
@@ -55,8 +51,8 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
-            className="rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors"
-            style={{ color: 'var(--color-primary)', backgroundColor: 'var(--color-primary-soft)' }}
+            className="rounded-lg px-3 py-1.5 text-sm font-semibold transition-all duration-200"
+            style={{ color: 'var(--color-text)', backgroundColor: 'var(--color-surface-2)', border: '1px solid var(--color-border)' }}
             title={t.switchLangLabel}
           >
             {t.switchLangLabel}
@@ -65,13 +61,13 @@ export default function Navbar() {
           <a
             href={SITE_CONFIG.downloadUrl}
             download
-            className="btn-primary hidden items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold sm:inline-flex"
+            className="btn-primary hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold sm:inline-flex"
           >
             {t.heroDownload}
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
-            className="rounded-lg p-2 lg:hidden"
+            className="rounded-lg p-2 lg:hidden transition-colors duration-200"
             style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text)' }}
             aria-label="القائمة"
           >
@@ -87,14 +83,14 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="lg:hidden border-t px-4 py-3" style={{ backgroundColor: 'var(--color-bg)', borderColor: 'var(--color-border)' }}>
-          <div className="flex flex-col gap-3">
+        <div className="border-t lg:hidden" style={{ backgroundColor: 'var(--color-bg)', borderColor: 'var(--color-border)' }}>
+          <div className="mx-auto max-w-7xl flex flex-col gap-3 px-5 py-4 sm:px-8">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="text-base font-medium"
+                className="text-base font-medium py-2"
                 style={{ color: 'var(--color-text)' }}
               >
                 {l.label}
@@ -104,7 +100,7 @@ export default function Navbar() {
               href={SITE_CONFIG.downloadUrl}
               download
               onClick={() => setOpen(false)}
-              className="btn-primary rounded-lg px-4 py-2.5 text-center font-semibold"
+              className="btn-primary rounded-lg px-4 py-3 text-center font-bold"
             >
               {t.heroDownload}
             </a>
