@@ -26,8 +26,7 @@ function App() {
   const [showInstall, setShowInstall] = useState(false)
 
   useEffect(() => {
-    if (localStorage.getItem('installGuideSeen') === '1') return
-    if (window.matchMedia('(pointer: coarse)').matches) {
+    if (localStorage.getItem('installGuideSeen') !== '1') {
       setShowInstall(true)
     }
   }, [])
