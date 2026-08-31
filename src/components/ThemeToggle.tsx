@@ -1,16 +1,38 @@
+import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n/I18nContext'
 
-export type ThemeToggleProps = {
-  theme: 'light' | 'dark'
-  onToggle: () => void
-}
+export default function ThemeToggle() {
+  const { t } = useI18n()
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
-export default function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
-  const t = useI18n()
+  useEffect(() => {
+    let stored: string | null = null
+    try {
+      stored = localStorage.getItem('theme')
+    } catch {
+      /* ignore */
+    }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const initial = stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light'
+    setTheme(initial)
+    if (initial === 'dark') document.documentElement.classList.add('dark')
+  }, [])
+
+  const toggle = () => {
+    const next = theme === 'light' ? 'dark' : 'light'
+    setTheme(next)
+    try {
+      localStorage.setItem('theme', next)
+    } catch {
+      /* ignore */
+    }
+    if (next === 'dark') document.documentElement.classList.add('dark')
+    else document.documentElement.classList.remove('dark')
+  }
 
   return (
     <button
-      onClick={onToggle}
+      onClick={toggle}
       className="rounded-lg p-2 transition-colors"
       style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text)' }}
       aria-label={theme === 'light' ? t.themeDarkLabel : t.themeLightLabel}

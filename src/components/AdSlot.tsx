@@ -8,7 +8,7 @@ interface AdSlotProps {
 }
 
 export default function AdSlot({ adKey, format = 'iframe', width = 160, height = 300 }: AdSlotProps) {
-  const t = useI18n()
+  const { t } = useI18n()
 
   const adDoc = `<!DOCTYPE html>
 <html lang="ar" dir="rtl">

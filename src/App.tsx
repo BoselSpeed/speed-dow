@@ -1,29 +1,25 @@
-import {
-  useState,
-  useEffect,
-} from 'react'
-import { fileInfo } from './data/fileInfo'
-import { updates } from './data/updates'
-import ThemeToggle from './components/ThemeToggle'
-import DownloadCard from './components/DownloadCard'
-import DownloadGuide from './components/DownloadGuide'
+import { useEffect, useState } from 'react'
+import { useI18n } from './i18n/I18nContext'
+import { bookLabels } from './i18n/translations'
+import Navbar from './components/Navbar'
+import Hero from './components/Hero'
+import About from './components/About'
+import Features from './components/Features'
+import Contents from './components/Contents'
+import Volumes from './components/Volumes'
+import Screenshots from './components/Screenshots'
+import HowTo from './components/HowTo'
+import Faq from './components/Faq'
+import Cta from './components/Cta'
+import Footer from './components/Footer'
+import DownloadWarning from './components/DownloadWarning'
 import InstallationGuideModal from './components/InstallationGuideModal'
-import UpdatesList from './components/UpdatesList'
 import AdSlot from './components/AdSlot'
 
+const AD_KEY = '8268954d284064f8fa131cc1ab864319'
+
 function App() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  useEffect(() => {
-    const stored = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    const initial = stored === 'dark' || (!stored && prefersDark) ? 'dark' : 'light'
-    setTheme(initial)
-    if (initial === 'dark') {
-      document.documentElement.classList.add('dark')
-    }
-  }, [])
-
+  const { lang, t } = useI18n()
   const [showInstall, setShowInstall] = useState(false)
 
   useEffect(() => {
@@ -37,57 +33,44 @@ function App() {
     setShowInstall(false)
   }
 
-  const toggleTheme = () => {
-    const next = theme === 'light' ? 'dark' : 'light'
-    setTheme(next)
-    localStorage.setItem('theme', next)
-    if (next === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
+  const convertData = t.convert(bookLabels[lang])
+  const scrollToFeatures = () => {
+    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: 'var(--color-bg)', color: 'var(--color-text)' }}>
-      <header className="flex items-center justify-between px-6 py-4 max-w-4xl mx-auto">
-        <h1 className="text-xl font-bold" style={{ color: 'var(--color-text)' }}>
-          {fileInfo.name}
-        </h1>
-        <ThemeToggle theme={theme} onToggle={toggleTheme} />
-      </header>
+      <Navbar />
 
-      <main className="px-6 pb-12 max-w-4xl mx-auto">
-        <section className="flex flex-col items-center gap-8">
-          <DownloadGuide />
+      <main>
+        <Hero onDiscover={scrollToFeatures} />
 
-          <DownloadCard info={fileInfo} />
-        </section>
+        <div className="pb-16">
+          <DownloadWarning />
+        </div>
 
-        <section className="mt-12 text-center">
-          <button
-            onClick={() => setShowInstall(true)}
-            className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold"
-          >
-            <span aria-hidden="true">📱</span>
-            كيفية تثبيت التطبيق
-          </button>
-        </section>
+        <AdSlot adKey={AD_KEY} />
 
-        <section className="mt-12">
-          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
-        </section>
+        <About />
 
-        <section className="mt-12 flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-8">
-          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
+        <AdSlot adKey={AD_KEY} />
 
-          <div className="w-full md:flex-1 md:min-w-0">
-            <UpdatesList updates={updates} />
-          </div>
+        <Features />
 
-          <AdSlot adKey="8268954d284064f8fa131cc1ab864319" />
-        </section>
+        <AdSlot adKey={AD_KEY} />
+
+        <Contents />
+        <Volumes convertData={convertData} />
+        <Screenshots />
+
+        <HowTo onOpenInstall={() => setShowInstall(true)} />
+
+        <Faq />
+
+        <Cta onOpenInstall={() => setShowInstall(true)} />
       </main>
+
+      <Footer />
 
       <InstallationGuideModal open={showInstall} onClose={closeInstall} />
     </div>
