@@ -34,6 +34,34 @@
     color: var(--color-text);
     transition: background-color 0.3s ease, color 0.3s ease;
   }
+
+  @keyframes modal-backdrop-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(24px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .modal-backdrop {
+    animation: modal-backdrop-in 0.2s ease-out;
+  }
+
+  .modal-in {
+    animation: modal-pop-in 0.25s cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
 }
 
 @layer components {

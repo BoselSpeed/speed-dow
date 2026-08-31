@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react'
+import {
+  useState,
+  useEffect,
+} from 'react'
 import { fileInfo } from './data/fileInfo'
 import { updates } from './data/updates'
 import ThemeToggle from './components/ThemeToggle'
 import DownloadCard from './components/DownloadCard'
 import DownloadGuide from './components/DownloadGuide'
-import InstallGuideModal from './components/InstallGuideModal'
+import InstallationGuideModal from './components/InstallationGuideModal'
 import UpdatesList from './components/UpdatesList'
 import AdSlot from './components/AdSlot'
-import { useI18n } from './i18n/I18nContext'
 
 function App() {
-  const t = useI18n()
   const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
@@ -66,10 +67,10 @@ function App() {
         <section className="mt-12 text-center">
           <button
             onClick={() => setShowInstall(true)}
-            className="inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium"
-            style={{ color: 'var(--color-primary)' }}
+            className="btn-primary inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold"
           >
-            {t.installShowAgain}
+            <span aria-hidden="true">📱</span>
+            كيفية تثبيت التطبيق
           </button>
         </section>
 
@@ -88,7 +89,7 @@ function App() {
         </section>
       </main>
 
-      <InstallGuideModal open={showInstall} onClose={closeInstall} />
+      <InstallationGuideModal open={showInstall} onClose={closeInstall} />
     </div>
   )
 }
