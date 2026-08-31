@@ -14,14 +14,14 @@ function Frame({ shot }: { shot: Shot }) {
   return (
     <div
       className="mx-auto w-44 overflow-hidden rounded-[1.8rem] border-4 bg-white shadow-xl"
-      style={{ borderColor: '#14141e' }}
+      style={{ borderColor: '#000000' }}
     >
       <div className="mx-auto mt-1.5 h-4 w-16 rounded-full bg-black" />
       <div className="p-2.5">
         <div className="mb-2 flex items-center justify-between rounded-md px-2 py-1.5" style={{ backgroundColor: 'var(--color-primary-soft)' }}>
-          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: '#1616ff' }} />
+          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: '#000000' }} />
           <span className="text-[7px] font-bold" style={{ color: 'var(--color-primary)' }}>{shot.title}</span>
-          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: '#16ff16' }} />
+          <span className="h-2 w-2 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
         </div>
         {shot.kind === 'cover' && shot.covers?.[0] && (
           <img src={shot.covers[0]} alt={shot.title} className="w-full rounded-md object-cover" style={{ height: 190 }} loading="lazy" />
@@ -46,9 +46,9 @@ export default function Screenshots() {
   const [lightbox, setLightbox] = useState<Shot | null>(null)
 
   const shots: Shot[] = [
-    { key: 'library', title: t.shotLibraryTitle, desc: t.shotLibraryDesc, kind: 'mixed', covers: ['/assets/screens/kitab-al-tawhid.jpg', '/assets/screens/sahih-al-bukhari.jpg', '/assets/screens/tafsir-ibn-kathir.jpg'] },
-    { key: 'volumes', title: t.shotVolumesTitle, desc: t.shotVolumesDesc, kind: 'mixed', covers: ['/assets/screens/tafsir-al-tabari.jpg', '/assets/screens/tafsir-ibn-kathir.jpg', '/assets/screens/al-aqidah-al-wasitiyyah.jpg'] },
-    { key: 'details', title: t.shotDetailsTitle, desc: t.shotDetailsDesc, kind: 'cover', covers: ['/assets/screens/kitab-al-tawhid.jpg'] },
+    { key: 'library', title: t.shotLibraryTitle, desc: t.shotLibraryDesc, kind: 'mixed', covers: ['/assets/screens/kitab-al-tawhid.jpg', '/assets/screens/sahih-al-bukhari.jpg', '/assets/screens/tafsir-ibn-kathir.jpg', '/assets/screens/al-aqidah-al-wasitiyyah.jpg'] },
+    { key: 'volumes', title: t.shotVolumesTitle, desc: t.shotVolumesDesc, kind: 'mixed', covers: ['/assets/screens/tafsir-al-tabari.jpg', '/assets/screens/tafsir-al-qurtubi.jpg', '/assets/screens/sahih-muslim.jpg', '/assets/screens/sunan-al-tirmidhi.jpg'] },
+    { key: 'details', title: t.shotDetailsTitle, desc: t.shotDetailsDesc, kind: 'cover', covers: ['/assets/screens/thalatha-al-usul.jpg'] },
   ]
 
   return (

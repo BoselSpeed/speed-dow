@@ -28,11 +28,11 @@ const BOOKS: Book[] = [
 ]
 
 const CAT_COLORS: Record<string, string> = {
-  'Tawhid': '#1616ff',
-  'Aqeedah': '#16ff16',
-  'Tafsir': '#f59e0b',
-  'Hadith': '#ec4899',
-  'Stories': '#06b6d4',
+  'Tawhid': '#111827',
+  'Aqeedah': '#3b82f6',
+  'Tafsir': '#4b5563',
+  'Hadith': '#6b7280',
+  'Stories': '#3b82f6',
 }
 
 const CAT_TRANSLATION: Record<string, { ar: string; en: string }> = {

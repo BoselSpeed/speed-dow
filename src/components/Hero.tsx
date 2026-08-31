@@ -8,7 +8,7 @@ function PhoneMockup() {
     <div className="anim-float relative mx-auto w-64 sm:w-72">
       <div
         className="relative overflow-hidden rounded-[2.5rem] border-4 bg-white shadow-2xl"
-        style={{ borderColor: '#14141e', maxHeight: 520 }}
+        style={{ borderColor: '#000000', maxHeight: 520 }}
       >
         <div className="mx-auto mt-2 h-5 w-24 rounded-full bg-black" />
         <div className="px-3 py-4">
@@ -17,7 +17,7 @@ function PhoneMockup() {
               <div className="text-[10px] font-bold" style={{ color: 'var(--color-primary)' }}>{t.heroTitle}</div>
               <div className="text-[9px]" style={{ color: 'var(--color-text-secondary)' }}>{t.shotLibraryTitle}</div>
             </div>
-            <div className="h-5 w-5 rounded-md" style={{ background: 'linear-gradient(135deg, #1616ff, #16ff16)' }} />
+            <div className="h-5 w-5 rounded-md" style={{ background: 'linear-gradient(135deg, #000000, #3b82f6)' }} />
           </div>
 
           <div className="space-y-2">
@@ -50,7 +50,7 @@ function PhoneMockup() {
               <span>70%</span>
             </div>
             <div className="h-1.5 w-full overflow-hidden rounded-full" style={{ backgroundColor: 'var(--color-surface-2)' }}>
-              <div className="h-full w-[70%] rounded-full" style={{ background: 'linear-gradient(90deg, #1616ff, #16ff16)' }} />
+              <div className="h-full w-[70%] rounded-full" style={{ background: 'linear-gradient(90deg, #000000, #3b82f6)' }} />
             </div>
           </div>
         </div>

@@ -54,7 +54,7 @@ export default function Cta({ onOpenInstall }: { onOpenInstall: () => void }) {
         <Reveal>
           <div
             className="relative overflow-hidden rounded-3xl px-6 py-14 text-center sm:px-12"
-            style={{ background: 'linear-gradient(135deg, #1616ff, #1616c0 55%, #0f9f0f 130%)' }}
+            style={{ background: 'linear-gradient(135deg, #000000, #1e293b 55%, #3b82f6 130%)' }}
           >
             <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" />
             <div className="relative">
@@ -69,7 +69,7 @@ export default function Cta({ onOpenInstall }: { onOpenInstall: () => void }) {
                   download
                   onClick={() => setClicked(true)}
                   onAnimationEnd={() => setClicked(false)}
-                  className={`inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-extrabold text-[#1616ff] shadow-xl transition-transform ${clicked ? 'scale-95' : 'hover:scale-105'}`}
+                  className={`inline-flex items-center gap-2 rounded-xl bg-white px-8 py-4 text-lg font-extrabold text-black shadow-xl transition-transform ${clicked ? 'scale-95' : 'hover:scale-105'}`}
                 >
                   {t.ctaButton}
                 </a>

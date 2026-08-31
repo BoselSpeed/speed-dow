@@ -3,6 +3,6 @@ export const SITE_CONFIG = {
   appNameEn: 'Fiqh App',
   downloadUrl: '/downloads/تطبيق-الفقه.apk',
   fileName: 'تطبيق-الفقه.apk',
-  primaryColor: '#1616ff',
-  accentColor: '#16ff16',
+  primaryColor: '#000000',
+  accentColor: '#3b82f6',
 }
