@@ -14,9 +14,7 @@ import Cta from './components/Cta'
 import Footer from './components/Footer'
 import DownloadWarning from './components/DownloadWarning'
 import InstallationGuideModal from './components/InstallationGuideModal'
-import AdSlot from './components/AdSlot'
-
-const AD_KEY = '8268954d284064f8fa131cc1ab864319'
+import AdSense from './components/AdSense'
 
 function App() {
   const { lang, t } = useI18n()
@@ -50,27 +48,35 @@ function App() {
         </div>
 
         <div className="flex justify-center">
-          <AdSlot adKey={AD_KEY} />
+          <AdSense className="max-w-3xl w-full" />
         </div>
 
         <About />
 
+        <div className="flex justify-center">
+          <AdSense className="max-w-3xl w-full" />
+        </div>
+
         <Features />
 
         <div className="flex justify-center">
-          <AdSlot adKey={AD_KEY} />
+          <AdSense className="max-w-3xl w-full" />
         </div>
 
         <Contents />
         <Volumes convertData={convertData} />
         <Screenshots />
 
+        <div className="flex justify-center">
+          <AdSense className="max-w-3xl w-full" />
+        </div>
+
         <HowTo />
 
         <Faq />
 
         <div className="flex justify-center">
-          <AdSlot adKey={AD_KEY} />
+          <AdSense className="max-w-3xl w-full" />
         </div>
 
         <Cta onOpenInstall={() => setShowInstall(true)} />

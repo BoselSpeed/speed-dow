@@ -185,6 +185,18 @@
   animation: lightboxIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ---- AdSense ---- */
+.adsense-wrap {
+  margin: 1.5rem auto;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+
 /* ---- Geometric Backgrounds ---- */
 .geo-grid {
   background-image:
