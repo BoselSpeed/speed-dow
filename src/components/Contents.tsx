@@ -1,31 +1,15 @@
 import { useI18n } from '../i18n/I18nContext'
 import Reveal from './Reveal'
+import { BOOKS, CAT_TRANSLATION } from '../data/books'
 
-interface Book {
-  ar: string
-  en: string
-  cat: string
-  cover?: string
-  multi?: boolean
+function toSlug(ar: string): string {
+  return ar
+    .replace(/[^\u0600-\u06FFa-zA-Z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
 }
-
-const BOOKS: Book[] = [
-  { ar: 'كتاب التوحيد', en: 'Kitab at-Tawhid', cat: 'Tawhid', cover: '/assets/screens/kitab-al-tawhid.jpg' },
-  { ar: 'ثلاثة الأصول', en: 'The Three Fundamental Principles', cat: 'Aqeedah' },
-  { ar: 'العقيدة الواسطية', en: 'Al-Aqidah al-Wasitiyyah', cat: 'Aqeedah', cover: '/assets/screens/al-aqidah-al-wasitiyyah.jpg' },
-  { ar: 'كشف الشبهات', en: 'Kashf ash-Shubuhat', cat: 'Aqeedah', cover: '/assets/screens/kashf-al-shubuhat.jpg' },
-  { ar: 'تفسير البغوي', en: 'Tafsir al-Baghawi', cat: 'Tafsir', multi: true, cover: '/assets/screens/tafsir-al-baghawi.jpg' },
-  { ar: 'مسند أبي داود', en: 'Musnad Abi Dawud', cat: 'Hadith', cover: '/assets/screens/musnad-abi-dawud.jpg' },
-  { ar: 'صحيح البخاري', en: 'Sahih al-Bukhari', cat: 'Hadith', cover: '/assets/screens/sahih-al-bukhari.jpg', multi: true },
-  { ar: 'صحيح مسلم', en: 'Sahih Muslim', cat: 'Hadith', multi: true, cover: '/assets/screens/sahih-muslim.jpg' },
-  { ar: 'سنن النسائي', en: "Sunan an-Nasa'i", cat: 'Hadith', cover: '/assets/screens/sunan-al-nasai.jpg' },
-  { ar: 'سنن الترمذي', en: "Sunan at-Tirmidhi", cat: 'Hadith', cover: '/assets/screens/sunan-al-tirmidhi.jpg' },
-  { ar: 'تفسير القرطبي', en: 'Tafsir al-Qurtubi', cat: 'Tafsir', multi: true, cover: '/assets/screens/tafsir-al-qurtubi.jpg' },
-  { ar: 'تفسير الطبري', en: 'Tafsir at-Tabari', cat: 'Tafsir', multi: true, cover: '/assets/screens/tafsir-al-tabari.jpg' },
-  { ar: 'تفسير الشوكاني', en: 'Tafsir ash-Shawkani', cat: 'Tafsir', multi: true, cover: '/assets/screens/tafsir-al-shawkani.jpg' },
-  { ar: 'تفسير ابن كثير', en: 'Tafsir Ibn Kathir', cat: 'Tafsir', multi: true, cover: '/assets/screens/tafsir-ibn-kathir.jpg' },
-  { ar: '50 قصة من صحيح البخاري', en: '50 Stories from Sahih al-Bukhari', cat: 'Stories', cover: '/assets/screens/qisas-min-sahih-al-bukhari.jpg' },
-]
 
 const CAT_COLORS: Record<string, string> = {
   'Tawhid': '#000000',
@@ -33,14 +17,6 @@ const CAT_COLORS: Record<string, string> = {
   'Tafsir': '#4b5563',
   'Hadith': '#6b7280',
   'Stories': '#3b82f6',
-}
-
-const CAT_TRANSLATION: Record<string, { ar: string; en: string }> = {
-  Tawhid: { ar: 'التوحيد', en: 'Tawhid' },
-  Aqeedah: { ar: 'العقيدة', en: 'Aqeedah' },
-  Tafsir: { ar: 'التفسير', en: 'Tafsir' },
-  Hadith: { ar: 'الحديث', en: 'Hadith' },
-  Stories: { ar: 'قصص', en: 'Stories' },
 }
 
 export default function Contents() {
@@ -86,8 +62,9 @@ export default function Contents() {
               {BOOKS.map((b) => {
                 const cat = CAT_TRANSLATION[b.cat]?.[lang] ?? b.cat
                 const name = lang === 'ar' ? b.ar : b.en
+                const slug = toSlug(b.ar)
                 return (
-                  <div key={b.ar} className="group flex flex-col items-start overflow-hidden rounded-xl p-3 transition-all duration-300" style={{ backgroundColor: 'var(--color-surface-2)' }}>
+                  <a key={b.ar} href={`/books/${slug}`} className="group flex flex-col items-start overflow-hidden rounded-xl p-3 transition-all duration-300" style={{ backgroundColor: 'var(--color-surface-2)' }}>
                     {b.cover ? (
                       <img src={b.cover} alt={name} className="mb-2 h-24 w-full rounded-lg object-cover" loading="lazy" />
                     ) : (
@@ -100,7 +77,7 @@ export default function Contents() {
                         {lang === 'ar' ? 'متعدد المجلدات' : 'Multi-volume'}
                       </span>
                     )}
-                  </div>
+                  </a>
                 )
               })}
             </div>
