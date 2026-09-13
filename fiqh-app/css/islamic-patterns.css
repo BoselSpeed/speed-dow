@@ -1,0 +1,258 @@
+/* islamic-patterns.css - النقوش الإسلامية */
+
+/* Base Pattern Container */
+.islamic-pattern {
+  position: relative;
+  overflow: hidden;
+}
+
+.islamic-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Girih Pattern - Ketebe Style */
+.pattern-girih {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 15L65 40L40 65L15 40Z'/%3E%3Cpath d='M40 30L50 40L40 50L30 40Z'/%3E%3Ccircle cx='40' cy='40' r='5'/%3E%3Ccircle cx='40' cy='40' r='10'/%3E%3Cline x1='0' y1='0' x2='80' y2='80'/%3E%3Cline x1='80' y1='0' x2='0' y2='80'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Arabesque Pattern - Floral */
+.pattern-arabesque {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Ccircle cx='50' cy='50' r='25'/%3E%3Ccircle cx='50' cy='50' r='40'/%3E%3Ccircle cx='50' cy='50' r='15'/%3E%3Cpath d='M50 25c0 0 15 10 15 25s-15 25-15 25'/%3E%3Cpath d='M50 25c0 0-15 10-15 25s15 25 15 25'/%3E%3Cpath d='M25 50c0 0 10 15 25 15s25-15 25-15'/%3E%3Cpath d='M25 50c0 0 10-15 25-15s25 15 25 15'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 100px 100px;
+}
+
+/* Geometric Grid Pattern */
+.pattern-grid {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Crect x='0' y='0' width='30' height='30'/%3E%3Crect x='30' y='30' width='30' height='30'/%3E%3Ccircle cx='15' cy='15' r='2'/%3E%3Ccircle cx='45' cy='45' r='2'/%3E%3Ccircle cx='15' cy='45' r='2'/%3E%3Ccircle cx='45' cy='15' r='2'/%3E%3Cline x1='0' y1='30' x2='60' y2='30'/%3E%3Cline x1='30' y1='0' x2='30' y2='60'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Star Pattern */
+.pattern-star {
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Cpolygon points='35,5 45,25 65,25 50,40 55,60 35,48 15,60 20,40 5,25 25,25'/%3E%3Ccircle cx='35' cy='35' r='10'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 70px 70px;
+}
+
+/* Islamic Border Decoration */
+.islamic-border {
+  position: relative;
+  padding: 2rem;
+}
+
+.islamic-border::before,
+.islamic-border::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='20' viewBox='0 0 40 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q10 0 20 10 Q30 20 40 10' fill='none' stroke='%23D4AF37' stroke-width='1'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%23D4AF37'/%3E%3Ccircle cx='30' cy='10' r='2' fill='%23D4AF37'/%3E%3C/svg%3E") repeat-x;
+  opacity: 0.3;
+}
+
+.islamic-border::before {
+  top: 0;
+}
+
+.islamic-border::after {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+/* Decorative Corners */
+.islamic-corners {
+  position: relative;
+}
+
+.islamic-corners::before,
+.islamic-corners::after {
+  content: '';
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 Q0 0 30 0' fill='none' stroke='%23D4AF37' stroke-width='1'/%3E%3Cpath d='M0 20 Q0 0 20 0' fill='none' stroke='%23D4AF37' stroke-width='0.5'/%3E%3Ccircle cx='15' cy='15' r='3' fill='none' stroke='%23D4AF37' stroke-width='0.5'/%3E%3C/svg%3E") no-repeat;
+  opacity: 0.4;
+}
+
+.islamic-corners::before {
+  top: 0;
+  right: 0;
+}
+
+.islamic-corners::after {
+  bottom: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+/* Animated Geometric Shape */
+.geometric-decoration {
+  position: absolute;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.geometric-decoration .geo-shape {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.5;
+}
+
+.geo-rotating {
+  animation: geoRotate 60s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes geoRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.geo-pulse {
+  animation: geoPulse 4s ease-in-out infinite;
+}
+
+@keyframes geoPulse {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.2;
+    transform: scale(1.05);
+  }
+}
+
+/* Islamic Frame */
+.islamic-frame {
+  border: 2px solid transparent;
+  background: linear-gradient(var(--gray-900), var(--gray-900)) padding-box,
+    linear-gradient(135deg, var(--gold), transparent, var(--gold)) border-box;
+  position: relative;
+}
+
+.islamic-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Decorative Line */
+.islamic-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.islamic-divider::before,
+.islamic-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.islamic-divider-icon {
+  color: var(--gold);
+  font-size: 1.5rem;
+}
+
+/* Background Ornament */
+.bg-ornament {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+.bg-ornament svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Light Pattern (for dark sections) */
+.pattern-light {
+  opacity: 0.02;
+}
+
+/* Heavy Pattern (for light sections) */
+.pattern-heavy {
+  opacity: 0.08;
+}
+
+/* Responsive patterns */
+@media (max-width: 768px) {
+  .islamic-pattern-bg {
+    background-size: 40px 40px;
+  }
+
+  .islamic-pattern-bg[data-pattern="girih"] {
+    background-size: 40px 40px;
+  }
+
+  .islamic-pattern-bg[data-pattern="subtle"] {
+    background-size: 50px 50px;
+  }
+}
+
+/* Pattern Animation Variations */
+@keyframes patternDrift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100px 100px;
+  }
+}
+
+.pattern-animated {
+  animation: patternDrift 30s linear infinite;
+}
+
+/* Corner Ornament for Cards */
+.card-ornament {
+  position: relative;
+}
+
+.card-ornament::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, transparent 50%, var(--gold) 50%);
+  opacity: 0.3;
+  border-radius: 0 var(--radius-md) 0 0;
+}
+
+/* Section Background Patterns */
+.section-pattern-girih {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Cpath d='M30 0L60 30L30 60L0 30Z'/%3E%3Cpath d='M30 15L45 30L30 45L15 30Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+.section-pattern-star {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-width='0.5'%3E%3Cpolygon points='40,5 50,30 75,30 55,45 60,70 40,55 20,70 25,45 5,30 30,30'/%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 80px 80px;
+}
