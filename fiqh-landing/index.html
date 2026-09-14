@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تطبيق الفقه: مكتبة شاملة لكتب التوحيد والعقيدة والحديث والتفسير. 8 كتب بدون إنترنت + 15 كتابًا إضافيًا. واجهة عربية وإنجليزية. حمّل مجانًا من Google Play.">
+  <meta name="keywords" content="تطبيق إسلامي، كتب فقه، عقيدة، حديث، تفسير، قرآني، بدون إنترنت">
+  <meta name="author" content="تطبيق الفقه">
+  <meta property="og:title" content="تطبيق الفقه — 23 كتابًا إسلاميًا في جيبك">
+  <meta property="og:description" content="مكتبتك الفقهية الشاملة. 8 كتب بدون إنترنت + 15 كتابًا إضافي. حمّل مجانًا من Google Play.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://speed-dow.surge.sh">
+  <meta property="og:image" content="https://speed-dow.surge.sh/assets/images/og-phone.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="تطبيق الفقه — 23 كتابًا إسلاميًا في جيبك">
+  <meta name="twitter:description" content="مكتبتك الفقهية الشاملة. 8 كتب بدون إنترنت + 15 كتابًا إضافي. حمّل مجانًا من Google Play.">
+  <title>تطبيق الفقه — 23 كتابًا إسلاميًا في جيبك</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=IBM+Plex+Sans+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/phone.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Grain Texture Overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="التنقل الرئيسي">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" aria-label="تطبيق الفقه - الصفحة الرئيسية">
+        <svg class="nav-logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 2L4 10v20l16 8 16-8V10L20 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M12 14h16M12 20h16M12 26h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="20" cy="20" r="3" fill="#D4AF37"/>
+        </svg>
+        <span>تطبيق الفقه</span>
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#features">الميزات</a>
+        <a href="#books">الكتب</a>
+        <a href="#how-it-works">كيف يعمل</a>
+        <a href="#requirements">المتطلبات</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#download" class="btn-nav-cta">
+          <svg class="google-play-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3 3h18v18H3V3z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M7.5 7.5l8 4.5-8 4.5v-9z" fill="currentColor"/>
+          </svg>
+          <span>احصل عليه من Google Play</span>
+        </a>
+      </div>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="فتح القائمة" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero section" id="hero" aria-labelledby="heroTitle">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="islamic-pattern" data-pattern="girih"></div>
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content container">
+      <div class="hero-text">
+        <div class="hero-badge reveal">
+          <svg class="badge-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#D4AF37"/>
+          </svg>
+          <span>تطبيق أندرويد إسلامي</span>
+        </div>
+        <h1 class="hero-title reveal" id="heroTitle">
+          <span class="title-line">تطبيق</span>
+          <span class="title-line gold-shimmer">الفقه</span>
+        </h1>
+        <div class="hero-verse reveal">
+          <p class="verse-text">﴿فَلَوْلَا نَفَرَ مِن كُلِّ فِرْقَةٍ مِّنْهُمْ طَائِفَةٌ لِّيَتَفَقَّهُوا فِي الدِّينِ﴾</p>
+          <span class="verse-ref">[التوبة: 122]</span>
+        </div>
+        <p class="hero-subtitle reveal">مكتبتك الفقهية الشاملة في جيبك — تعمل بدون إنترنت</p>
+        <div class="hero-actions reveal">
+          <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn btn-google magnetic" aria-label="احصل على التطبيق من Google Play">
+            <svg class="btn-icon-google" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3.18 23.04c.55-.32 1.13-.68 1.63-1.12.5-.44.91-.96 1.22-1.54.31-.58.47-1.22.47-1.91V3.63c0-.69-.16-1.33-.47-1.91-.31-.58-.72-1.1-1.22-1.54-.5-.44-1.08-.8-1.63-1.12-.55-.32-1.15-.48-1.78-.48-.63 0-1.23.16-1.78.48-.55.32-1.13.68-1.63 1.12-.5.44-.91.96-1.22 1.54-.31.58-.47 1.22-.47 1.91v15.74c0 .69.16 1.33.47 1.91.31.58.72 1.1 1.22 1.54.5.44 1.08.8 1.63 1.12.55.32 1.15.48 1.78.48.63 0 1.23-.16 1.78-.48z" fill="#D4AF37" opacity="0.15"/>
+              <path d="M15.5 11.5L4 14.5l4-4.5-4-4.5 11.5 3z" fill="#D4AF37"/>
+              <path d="M15.5 11.5L4 14.5l4-4.5-4-4.5 11.5 3z" stroke="#D4AF37" stroke-width="0.5" fill="none"/>
+            </svg>
+            <span>احصل عليه من Google Play</span>
+          </a>
+          <a href="#features" class="btn btn-secondary magnetic">
+            <span>اكتشف الميزات</span>
+          </a>
+        </div>
+        <p class="hero-requirement reveal">يتطلب أندرويد 7.0 فما فوق</p>
+      </div>
+      <div class="hero-phone reveal">
+        <div class="phone-wrapper" id="phoneWrapper">
+          <div class="phone-frame" id="phoneFrame">
+            <div class="phone-notch" aria-hidden="true"></div>
+            <div class="phone-screen">
+              <div class="screen-slide active" data-index="0">
+                <div class="screen-library">
+                  <div class="screen-header">
+                    <span class="screen-title">المكتبة</span>
+                    <span class="screen-icon">🔍</span>
+                  </div>
+                  <div class="screen-books">
+                    <div class="mini-book b1">📕</div>
+                    <div class="mini-book b2">📗</div>
+                    <div class="mini-book b3">📘</div>
+                    <div class="mini-book b4">📙</div>
+                    <div class="mini-book b5">📚</div>
+                    <div class="mini-book b6">📖</div>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-slide" data-index="1">
+                <div class="screen-pdf">
+                  <div class="pdf-toolbar">
+                    <span class="pdf-title">كتاب التوحيد</span>
+                    <span class="pdf-page">24 / 180</span>
+                  </div>
+                  <div class="pdf-content">
+                    <p class="pdf-text">بسم الله الرحمن الرحيم</p>
+                    <p class="pdf-text-sm">قال المؤلف رحمه الله: اعلم رحمك الله أن العلم علمان...</p>
+                  </div>
+                  <div class="pdf-controls">
+                    <span>◀</span>
+                    <span class="pdf-zoom">⊕</span>
+                    <span>▶</span>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-slide" data-index="2">
+                <div class="screen-lesson">
+                  <div class="lesson-header">
+                    <span class="lesson-badge">📘 درس</span>
+                    <span class="lesson-num">3 من 12</span>
+                  </div>
+                  <h4 class="lesson-title">أركان الإسلام الخمسة</h4>
+                  <p class="lesson-text">أركان الإسلام خمسة: شهادة أن لا إله إلا الله...</p>
+                  <div class="lesson-progress">
+                    <div class="progress-track">
+                      <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span>75%</span>
+                  </div>
+                  <button class="lesson-btn">تحديد كمكتمل ✓</button>
+                </div>
+              </div>
+              <div class="screen-slide" data-index="3">
+                <div class="screen-quiz">
+                  <div class="quiz-header">
+                    <span class="quiz-badge">📝 اختبار</span>
+                    <span class="quiz-q">1 / 5</span>
+                  </div>
+                  <h4 class="quiz-question">ما هو الركن الأول من أركان الإسلام؟</h4>
+                  <div class="quiz-options">
+                    <span class="quiz-option">الصلاة</span>
+                    <span class="quiz-option correct">شهادة أن لا إله إلا الله</span>
+                    <span class="quiz-option">الزكاة</span>
+                    <span class="quiz-option">الصوم</span>
+                  </div>
+                  <div class="quiz-progress">
+                    <div class="progress-track">
+                      <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="screen-slide" data-index="4">
+                <div class="screen-stats">
+                  <div class="stats-header">
+                    <span class="stats-title">إحصائياتي</span>
+                  </div>
+                  <div class="stats-grid">
+                    <div class="stat-card-mini">
+                      <span class="stat-icon-mini">⏱️</span>
+                      <span class="stat-val">24 ساعة</span>
+                      <span class="stat-lbl">وقت القراءة</span>
+                    </div>
+                    <div class="stat-card-mini">
+                      <span class="stat-icon-mini">📚</span>
+                      <span class="stat-val">12</span>
+                      <span class="stat-lbl">دروس مكتملة</span>
+                    </div>
+                    <div class="stat-card-mini">
+                      <span class="stat-icon-mini">🔥</span>
+                      <span class="stat-val">14</span>
+                      <span class="stat-lbl">سلسلة أيام</span>
+                    </div>
+                    <div class="stat-card-mini">
+                      <span class="stat-icon-mini">⭐</span>
+                      <span class="stat-val">5</span>
+                      <span class="stat-lbl">شارات</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-glow" aria-hidden="true"></div>
+        </div>
+        <div class="phone-dots" id="phoneDots" aria-label="شاشات التطبيق">
+          <button class="dot active" data-index="0" aria-label="المكتبة"></button>
+          <button class="dot" data-index="1" aria-label="قارئ PDF"></button>
+          <button class="dot" data-index="2" aria-label="الدرس"></button>
+          <button class="dot" data-index="3" aria-label="الاختبار"></button>
+          <button class="dot" data-index="4" aria-label="الإحصائيات"></button>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-mouse">
+        <span class="scroll-wheel"></span>
+      </span>
+      <span class="scroll-text">اكتشف المزيد</span>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features section section-light" id="features" aria-labelledby="featuresTitle">
+    <div class="islamic-pattern" data-pattern="subtle" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 class="section-title" id="featuresTitle">ميزات التطبيق</h2>
+        <p class="section-subtitle">كل ما تحتاجه لطلب العلم في تطبيق واحد</p>
+      </header>
+      <div class="features-grid">
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="8" y="6" width="32" height="36" rx="2" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M16 14h16M16 20h12M16 26h8" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">مكتبة غنية بـ 23 كتابًا</h3>
+          <p class="feature-desc">8 كتب محمّلة مع التطبيق تعمل بدون إنترنت + 15 كتابًا من أمهات التفسير والحديث.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="6" y="8" width="36" height="32" rx="2" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M12 20h24M18 28h12" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 14v10M20 18l4-4 4 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">قارئ PDF متكامل</h3>
+          <p class="feature-desc">التنقل السلس بين الصفحات، التكبير والتصغير، القفز إلى صفحة، ملء الشاشة، وحفظ تلقائي لتقدم القراءة.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="18" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M24 12v12l8 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 36l4-4 4 4 4-4 4 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">تعلّم وتقييم</h3>
+          <p class="feature-desc">أقسام ودروس فقهية مع تتبع التقدم، واختبارات تفاعلية بعد كل درس مع الشرح ومراجعة الإجابات.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="20" cy="20" r="12" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M32 32l8 8" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+              <path d="M24 8c0 0 4 4 4 8s-4 8-4 8 4 4 4 8" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">بحث ذكي شامل</h3>
+          <p class="feature-desc">بحث نصي في كل الكتب + بحث صوتي (Speech-to-Text).</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="6" y="6" width="36" height="36" rx="4" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M12 24h4l2-8 4 16 2-8h4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">تتبّع وإنجازات</h3>
+          <p class="feature-desc">نسبة التقدم، سلسلة الأيام المتتالية، الهدف اليومي، إجمالي وقت القراءة، درجات الاختبارات، والشارات.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 6l4 8 8 2-6 6 2 8-7-4-7 4 2-8-6-6 8-2 4-8z" stroke="#D4AF37" stroke-width="2" fill="none"/>
+              <path d="M18 30l-4 6h20l-4-6" stroke="#D4AF37" stroke-width="2" fill="none"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">أدوات شخصية</h3>
+          <p class="feature-desc">المفضلة، الملاحظات، سجل البحث، إعدادات اللغة وحجم الخط، وإدارة البيانات.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <circle cx="24" cy="24" r="18" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M16 24h16M24 16v16" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+              <path d="M32 18c2 3 2 9 0 12M16 18c-2 3-2 9 0 12" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">واجهة ثنائية اللغة</h3>
+          <p class="feature-desc">عربية وإنجليزية، بتصميم أنيق متجاوب مع جميع أحجام الشاشات.</p>
+        </article>
+        <article class="feature-card reveal" tabindex="0">
+          <div class="feature-icon">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <rect x="8" y="14" width="32" height="24" rx="2" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M16 14V10a8 8 0 0116 0v4" stroke="#D4AF37" stroke-width="2"/>
+              <path d="M24 22v6M22 28h4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="feature-title">يعمل بدون إنترنت</h3>
+          <p class="feature-desc">8 كتب محمّلة مع التطبيق تعمل بالكامل دون اتصال بالإنترنت.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bundled Books Section -->
+  <section class="books section" id="books" aria-labelledby="booksTitle">
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 class="section-title" id="booksTitle">
+          <span class="section-icon">📚</span>
+          ثمانية كتب في جيبك — بدون إنترنت
+        </h2>
+        <p class="section-subtitle">أهم كتب التوحيد والعقيدة والحديث والتفسير محمّلة مع التطبيق</p>
+      </header>
+      <div class="books-grid reveal">
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📕</span>
+          </div>
+          <span class="book-name">كتاب التوحيد</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📗</span>
+          </div>
+          <span class="book-name">ثلاثة الأصول</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📘</span>
+          </div>
+          <span class="book-name">العقيدة الواسطية</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📙</span>
+          </div>
+          <span class="book-name">كشف الشبهات</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📚</span>
+          </div>
+          <span class="book-name">50 قصة من صحيح البخاري</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📖</span>
+          </div>
+          <span class="book-name">تفسير ابن كثير</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📗</span>
+          </div>
+          <span class="book-name">صحيح البخاري</span>
+        </div>
+        <div class="book-item">
+          <div class="book-cover">
+            <span class="book-emoji">📘</span>
+          </div>
+          <span class="book-name">صحيح مسلم</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="how-it-works section section-light" id="how-it-works" aria-labelledby="howTitle">
+    <div class="islamic-pattern" data-pattern="subtle" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 class="section-title" id="howTitle">كيف يعمل؟</h2>
+        <p class="section-subtitle">ثلاث خطوات بسيطة لبدء رحلتك الفقهية</p>
+      </header>
+      <div class="steps-timeline reveal">
+        <div class="timeline-line" aria-hidden="true"></div>
+        <div class="step" data-step="1">
+          <div class="step-dot">
+            <span class="step-number">1</span>
+          </div>
+          <div class="step-icon" aria-hidden="true">📲</div>
+          <h3 class="step-title">حمّل التطبيق</h3>
+          <p class="step-desc">من Google Play مجانًا</p>
+        </div>
+        <div class="step" data-step="2">
+          <div class="step-dot">
+            <span class="step-number">2</span>
+          </div>
+          <div class="step-icon" aria-hidden="true">📚</div>
+          <h3 class="step-title">اختر الكتاب أو الدرس</h3>
+          <p class="step-desc">تصفّح المكتبة وابدأ القراءة</p>
+        </div>
+        <div class="step" data-step="3">
+          <div class="step-dot">
+            <span class="step-number">3</span>
+          </div>
+          <div class="step-icon" aria-hidden="true">✍️</div>
+          <h3 class="step-title">اقرأ، تعلّم، واختبر نفسك</h3>
+          <p class="step-desc">تابع تقدمك واجتاز الاختبارات</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- System Requirements -->
+  <section class="requirements section" id="requirements" aria-labelledby="reqTitle">
+    <div class="container">
+      <header class="section-header reveal">
+        <h2 class="section-title" id="reqTitle">متطلبات النظام</h2>
+      </header>
+      <div class="requirements-card reveal">
+        <div class="req-item">
+          <div class="req-icon">📱</div>
+          <div class="req-content">
+            <h4>نظام التشغيل</h4>
+            <p>أندرويد 7.0 (API 24) فما فوق</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon">🌐</div>
+          <div class="req-content">
+            <h4>اللغة</h4>
+            <p>العربية والإنجليزية</p>
+          </div>
+        </div>
+        <div class="req-item">
+          <div class="req-icon">📡</div>
+          <div class="req-content">
+            <h4>الإنترنت</h4>
+            <p>اختياري (8 كتب تعمل بدونه)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta section section-light" id="download" aria-labelledby="ctaTitle">
+    <div class="islamic-pattern" data-pattern="girih" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <div class="hadith-badge">
+          <svg class="hadith-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="#D4AF37"/>
+          </svg>
+          <blockquote class="hadith-text">"من يرد الله به خيرًا يفقهه في الدين"</blockquote>
+          <cite class="hadith-ref">— متفق عليه</cite>
+        </div>
+        <h2 class="cta-title" id="ctaTitle">ابدأ رحلتك الفقهية اليوم</h2>
+        <p class="cta-subtitle">مجاني — بدون إعلانات</p>
+        <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer" class="btn btn-google-lg magnetic" aria-label="احصل على التطبيق من Google Play">
+          <svg class="btn-icon-google" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3.18 23.04c.55-.32 1.13-.68 1.63-1.12.5-.44.91-.96 1.22-1.54.31-.58.47-1.22.47-1.91V3.63c0-.69-.16-1.33-.47-1.91-.31-.58-.72-1.1-1.22-1.54-.5-.44-1.08-.8-1.63-1.12-.55-.32-1.15-.48-1.78-.48-.63 0-1.23.16-1.78.48-.55.32-1.13.68-1.63 1.12-.5.44-.91.96-1.22 1.54-.31.58-.47 1.22-.47 1.91v15.74c0 .69.16 1.33.47 1.91.31.58.72 1.1 1.22 1.54.5.44 1.08.8 1.63 1.12.55.32 1.15.48 1.78.48.63 0 1.23-.16 1.78-.48z" fill="#D4AF37" opacity="0.15"/>
+            <path d="M15.5 11.5L4 14.5l4-4.5-4-4.5 11.5 3z" fill="#D4AF37"/>
+          </svg>
+          <span>احصل عليه من Google Play</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <svg class="footer-logo-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M20 2L4 10v20l16 8 16-8V10L20 2z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+            <path d="M12 14h16M12 20h16M12 26h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="3" fill="#D4AF37"/>
+          </svg>
+          <span>تطبيق الفقه</span>
+        </div>
+        <p class="footer-tagline">صُنع بـ ❤️ لخدمة طلاب العلم</p>
+        <div class="footer-links">
+          <a href="#">سياسة الخصوصية</a>
+          <a href="#">شروط الاستخدام</a>
+        </div>
+        <p class="copyright">© 2024 تطبيق الفقه. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/phone-slider.js"></script>
+</body>
+</html>
