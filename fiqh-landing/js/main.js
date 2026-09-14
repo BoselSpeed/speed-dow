@@ -9,6 +9,8 @@
   const cursorGlow = document.getElementById('cursorGlow');
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const navLinks = document.getElementById('navLinks');
+  const langToggle = document.getElementById('langToggle');
+  const particlesContainer = document.getElementById('particles');
 
   // Scroll Progress Bar
   function updateScrollProgress() {
@@ -41,6 +43,23 @@
       cursorGlow.style.left = `${e.clientX}px`;
       cursorGlow.style.top = `${e.clientY}px`;
     });
+  }
+
+  // Floating Particles
+  function initParticles() {
+    if (!particlesContainer) return;
+
+    const particleCount = 10;
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * 12}s`;
+      particle.style.animationDuration = `${10 + Math.random() * 6}s`;
+      particle.style.width = `${2 + Math.random() * 3}px`;
+      particle.style.height = particle.style.width;
+      particlesContainer.appendChild(particle);
+    }
   }
 
   // Mobile Menu Toggle
@@ -78,6 +97,18 @@
           });
         }
       });
+    });
+  }
+
+  // Language Toggle
+  function initLangToggle() {
+    if (!langToggle) return;
+    langToggle.addEventListener('click', () => {
+      const currentLang = document.documentElement.lang;
+      const targetLang = currentLang === 'ar' ? 'en' : 'ar';
+      const targetDir = currentLang === 'ar' ? 'ltr' : 'rtl';
+      const targetFile = currentLang === 'ar' ? 'en.html' : 'index.html';
+      window.location.href = targetFile;
     });
   }
 
@@ -138,7 +169,7 @@
     }
   }
 
-  // Reveal elements on scroll (fallback)
+  // Reveal elements on scroll
   function initScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -159,8 +190,10 @@
   // Initialize everything
   function init() {
     initCursorGlow();
+    initParticles();
     initMobileMenu();
     initSmoothScroll();
+    initLangToggle();
     initMagneticButtons();
     initCardTilt();
     initScrollReveal();
