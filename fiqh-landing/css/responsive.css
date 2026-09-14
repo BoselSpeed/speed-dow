@@ -255,7 +255,6 @@
 /* High Contrast Mode */
 @media (prefers-contrast: high) {
   :root {
-    --gold: #B8960C;
     --gray-400: #4B5563;
   }
 }

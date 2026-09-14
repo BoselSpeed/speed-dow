@@ -152,7 +152,7 @@
 }
 
 .pdf-zoom {
-  color: var(--gold);
+  color: var(--gray-900);
   font-weight: 600;
 }
 
@@ -174,8 +174,8 @@
 
 .lesson-badge {
   padding: 0.2rem 0.65rem;
-  background: var(--gold-subtle);
-  color: var(--gold);
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--gray-900);
   border-radius: 100px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -213,16 +213,16 @@
 .lesson-progress span {
   font-family: var(--font-numbers);
   font-size: 0.85rem;
-  color: var(--gold);
+  color: var(--gray-900);
   font-weight: 600;
   min-width: 32px;
 }
 
 .lesson-btn {
   padding: 0.65rem;
-  background: var(--gold-subtle);
-  color: var(--gold);
-  border: 1px solid var(--gold-border);
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--gray-900);
+  border: 1px solid var(--gray-100);
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.85rem;
@@ -230,7 +230,7 @@
 }
 
 .lesson-btn:hover {
-  background: var(--gold);
+  background: var(--gray-900);
   color: var(--white);
 }
 
@@ -252,8 +252,8 @@
 
 .quiz-badge {
   padding: 0.2rem 0.65rem;
-  background: var(--gold-subtle);
-  color: var(--gold);
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--gray-900);
   border-radius: 100px;
   font-size: 0.8rem;
   font-weight: 600;
@@ -292,9 +292,9 @@
 }
 
 .quiz-option.correct {
-  background: var(--gold-subtle);
-  border-color: var(--gold-border);
-  color: var(--gold);
+  background: rgba(0, 0, 0, 0.06);
+  border-color: var(--gray-100);
+  color: var(--gray-900);
 }
 
 .quiz-progress {
@@ -341,7 +341,7 @@
 }
 
 .stat-card-mini:hover {
-  border-color: var(--gold-border);
+  border-color: var(--gray-100);
   transform: translateY(-2px);
 }
 
@@ -385,7 +385,7 @@
 }
 
 .dot.active {
-  background: var(--gold);
+  background: var(--gray-900);
   width: 24px;
   border-radius: 4px;
 }
@@ -414,8 +414,8 @@
 
 .feature-card:hover {
   transform: translateY(-6px);
-  border-color: var(--gold-border);
-  box-shadow: var(--shadow-gold);
+  border-color: var(--gray-900);
+  box-shadow: var(--shadow-accent);
   opacity: 1;
 }
 
@@ -491,8 +491,8 @@
 }
 
 .book-item:hover .book-cover {
-  box-shadow: var(--shadow-gold);
-  border-color: var(--gold-border);
+  box-shadow: var(--shadow-accent);
+  border-color: var(--gray-100);
   transform: perspective(500px) rotateY(0deg) translateY(-4px);
 }
 
@@ -518,7 +518,7 @@
   right: 20%;
   left: 20%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--gray-900), transparent);
   z-index: 0;
   opacity: 0.3;
 }
@@ -540,25 +540,25 @@
   height: 80px;
   border-radius: 50%;
   background: var(--white);
-  border: 2px solid var(--gold);
+  border: 2px solid var(--gray-900);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.25rem;
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.06);
   transition: all 0.6s var(--transition);
 }
 
 .step:hover .step-dot {
   transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 }
 
 .step-number {
   font-family: var(--font-numbers);
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--gray-900);
 }
 
 .step-icon {
@@ -630,6 +630,8 @@
   position: relative;
   overflow: hidden;
   padding: clamp(5rem, 10vw, 7rem) 0;
+  background: var(--black-solid);
+  color: var(--white-solid);
 }
 
 .cta-content {
@@ -645,9 +647,9 @@
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 2rem;
-  background: var(--glass-bg);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-lg);
   flex-wrap: wrap;
   justify-content: center;
@@ -659,16 +661,20 @@
   flex-shrink: 0;
 }
 
+.hadith-icon svg {
+  fill: var(--white-solid);
+}
+
 .hadith-text {
   font-family: var(--font-heading);
   font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-  color: var(--gray-800);
+  color: var(--white-solid);
   font-style: italic;
 }
 
 .hadith-ref {
   font-size: 0.9rem;
-  color: var(--gray-400);
+  color: var(--gray-300);
   width: 100%;
   text-align: center;
   margin-top: 0.25rem;
@@ -678,13 +684,13 @@
   font-family: var(--font-heading);
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 700;
-  color: var(--gray-900);
+  color: var(--white-solid);
   line-height: 1.2;
 }
 
 .cta-subtitle {
   font-size: clamp(1rem, 2vw, 1.15rem);
-  color: var(--gray-400);
+  color: var(--gray-300);
 }
 
 /* Footer */
@@ -714,7 +720,7 @@
 .footer-logo-icon {
   width: 26px;
   height: 26px;
-  color: var(--gold);
+  color: var(--gray-900);
 }
 
 .footer-tagline {
