@@ -1,5 +1,4 @@
 import { useI18n } from '../i18n/I18nContext'
-import { SITE_CONFIG } from '../data/siteConfig'
 import Reveal from './Reveal'
 
 const STEPS = [
@@ -41,8 +40,7 @@ export default function HowTo() {
         <Reveal delay={180}>
           <div className="mt-10 text-center">
             <a
-              href={SITE_CONFIG.downloadUrl}
-              download
+              href="#download"
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-lg font-bold"
             >
               {t.howStep1Title}

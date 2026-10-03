@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -9,21 +9,13 @@ import Stats from './components/Stats'
 import Cta from './components/Cta'
 import Footer from './components/Footer'
 import DownloadWarning from './components/DownloadWarning'
-import InstallationGuideModal from './components/InstallationGuideModal'
 
 function App() {
-  const [showInstall, setShowInstall] = useState(false)
-
   useEffect(() => {
     if (localStorage.getItem('installGuideSeen') !== '1') {
-      setShowInstall(true)
+      // no-op: keep existing localStorage behavior if needed later
     }
   }, [])
-
-  const closeInstall = () => {
-    localStorage.setItem('installGuideSeen', '1')
-    setShowInstall(false)
-  }
 
   const scrollToFeatures = () => {
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
@@ -50,12 +42,10 @@ function App() {
 
         <Stats />
 
-        <Cta onOpenInstall={() => setShowInstall(true)} />
+        <Cta />
       </main>
 
       <Footer />
-
-      <InstallationGuideModal open={showInstall} onClose={closeInstall} />
     </div>
   )
 }

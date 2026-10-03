@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useI18n } from '../i18n/I18nContext'
-import { SITE_CONFIG } from '../data/siteConfig'
 import ThemeToggle from './ThemeToggle'
 
 export default function Navbar() {
@@ -59,8 +58,7 @@ export default function Navbar() {
           </button>
           <ThemeToggle />
           <a
-            href={SITE_CONFIG.downloadUrl}
-            download
+            href="#download"
             className="btn-primary hidden items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold sm:inline-flex"
           >
             {t.heroDownload}
@@ -97,8 +95,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href={SITE_CONFIG.downloadUrl}
-              download
+              href="#download"
               onClick={() => setOpen(false)}
               className="btn-primary rounded-lg px-4 py-3 text-center font-bold"
             >

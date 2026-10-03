@@ -1,5 +1,4 @@
 import { useI18n } from '../i18n/I18nContext'
-import { SITE_CONFIG } from '../data/siteConfig'
 
 function PhoneMockup() {
   const { t } = useI18n()
@@ -104,8 +103,7 @@ export default function Hero({ onDiscover }: { onDiscover: () => void }) {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
-              href={SITE_CONFIG.downloadUrl}
-              download
+              href="#download"
               className="btn-primary inline-flex items-center gap-2 rounded-xl px-8 py-4 text-lg font-bold"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">

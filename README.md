@@ -15,14 +15,13 @@
 
 ```
 ├── public/
-│   ├── downloads/
-│   │   └── تطبيق-الفقه.apk   ← ملف التحميل (استبدله بنفس الاسم)
 │   ├── favicon.svg
 │   ├── robots.txt
 │   └── sitemap.xml
 ├── src/
 │   ├── data/
-│   │   ├── fileInfo.ts      ← معلومات الملف (اسم، إصدار، حجم، نوع…)
+│   │   ├── siteConfig.ts     ← روابط التحميل الأربعة
+│   │   ├── fileInfo.ts      ← معلومات الملف
 │   │   └── updates.ts       ← سجل آخر التحديثات
 │   ├── i18n/                ← جاهز لدعم لغات متعددة مستقبلًا
 │   ├── components/
@@ -44,11 +43,26 @@
 
 ## طريقة الاستخدام
 
-### 1) وضع ملف التحميل
+### 1) إعداد روابط التحميل
 
-استبدل الملف الموجود داخل `public/downloads/` بملفك الجديد **بنفس الاسم** الذي حددته في `fileInfo.ts` (حقل `fileName`، حاليًا `تطبيق-الفقه.apk`).
+افتح `src/data/siteConfig.ts` وعدّل روابط التحميل:
 
-> الملف الحالي هو نسخة APK من «تطبيق الفقه» بحجم 76 MB.
+```ts
+export const SITE_CONFIG = {
+  appName: 'تطبيق الفقه',
+  appNameEn: 'Fiqh App',
+  downloadLinks: [
+    { id: 'link1', label: 'الرابط الأول', href: 'PLACEHOLDER_LINK_1' },
+    { id: 'link2', label: 'الرابط الثاني', href: 'PLACEHOLDER_LINK_2' },
+    { id: 'link3', label: 'الرابط الثالث', href: 'PLACEHOLDER_LINK_3' },
+    { id: 'link4', label: 'الرابط الرابع', href: 'PLACEHOLDER_LINK_4' },
+  ],
+  primaryColor: '#000000',
+  accentColor: '#3b82f6',
+}
+```
+
+> لا ترفع أي ملف APK أو IPA داخل المشروع. استخدم الروابط الخارجية فقط.
 
 ### 2) تعديل معلومات الملف
 
@@ -62,7 +76,7 @@ export const fileInfo = {
   size: '76 MB',
   fileType: 'APK',
   lastUpdated: '3 أكتوبر 2026',
-  fileName: 'تطبيق-الفقه.apk', // ← يجب أن يطابق اسم الملف داخل public/downloads/
+  fileName: 'تطبيق-الفقه.apk',
 }
 ```
 
@@ -85,7 +99,7 @@ npm install
 npm run build      # ينتج مجلد site/ كاملًا (موقع Static جاهز)
 ```
 
-انشر محتويات مجلد `site/` — وهو مجلد **مستقل** يحتوي الموقع Static كاملًا (HTML + CSS + JS + ملف التحميل) — على أي استضافة تدعم المواقع Static (Netlify، Vercel، GitHub Pages، VPS…).
+انشر محتويات مجلد `site/` — وهو مجلد **مستقل** يحتوي الموقع Static كاملًا (HTML + CSS + JS) — على أي استضافة تدعم المواقع Static (Netlify، Vercel، GitHub Pages، VPS…).
 
 ## تخصيص إضافي
 
@@ -102,9 +116,8 @@ npm run build      # ينتج مجلد site/ كاملًا (موقع Static جا�
 
 ## التعليمات والإرشادات
 
-- **تنبيه التحميل** (`src/components/DownloadWarning.tsx`): بطاقة تحذير من أزرار التنزيل داخل الإعلانات، معروضة **فوق منطقة التنزيل** حتى يراها الزائر قبل تنزيل الملف.
-- **خطوات التثبيت** (`src/components/InstallationGuideModal.tsx`): لوحة (Modal) مستقلة تعرض تعليمات تعطيل Play Protect وتنصيب الـ APK **بصيغتها الأصلية دون تغيير** (نص مدمج بالكامل في المكوّن مع أيقونة لكل خطوة). تظهر تلقائيًا عند أول دخول لأي زائر، وتُغلق بزر «فهمت، أُكمل» مع حفظ القرار في LocalStorage، ويمكن إعادة فتحها دائمًا من زر **«📱 كيفية تثبيت التطبيق»** أسفل بطاقة التحميل.
-- نصوص تنبيه التحميل في `src/i18n/translations.ts`.
+- نصوص أزرار الروابط في `src/i18n/translations.ts`.
+- الروابط الأربعة معرفة في `src/data/siteConfig.ts` ويمكن تعديلها بسهولة.
 
 ## الإعلانات
 
@@ -115,5 +128,5 @@ npm run build      # ينتج مجلد site/ كاملًا (موقع Static جا�
 ## ملاحظات أمنية
 
 - لا توجد أي معلومات سرية داخل الموقع.
-- الملف داخل `public/downloads/` متاح للتحميل المباشر لأي زائر وهذا مقصود.
 - لا يوجد نظام حماية أو تسجيل دخول — الموقع Static بسيط تعتمد عليه فقط.
+- لا يتم رفع أي ملف تطبيق داخل المشروع؛ الروابط خارجية فقط.

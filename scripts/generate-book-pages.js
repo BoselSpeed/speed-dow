@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const OUT_DIR = path.resolve(process.cwd(), 'public/books')
 const SITE_URL = 'https://speed-dow.surge.sh'
-const APP_DOWNLOAD = '/downloads/تطبيق-الفقه.apk'
 
 function escapeHtml(str) {
   return str
@@ -242,8 +241,8 @@ function generateBookPage(book) {
           <h1 style="font-size: 1.75rem; font-weight: 800; margin-top: 0.75rem; line-height: 1.3;">${escapeHtml(titleAr)}</h1>
           <p style="margin-top: 1rem; color: var(--text-secondary);">${escapeHtml(descriptionAr)}</p>
           <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
-            <a href="${APP_DOWNLOAD}" download class="btn">تنزيل التطبيق</a>
-            <a href="/" class="btn" style="background: var(--surface2); color: var(--text); border: 1px solid var(--border);">العودة للمكتبة</a>
+            <a href="#download" class="btn">الروابط</a>
+            <a href="/" class="btn" style="background: var(--surface-2); color: var(--text); border: 1px solid var(--border);">العودة للمكتبة</a>
           </div>
         </div>
       </div>
