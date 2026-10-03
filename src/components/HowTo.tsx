@@ -6,8 +6,6 @@ const STEPS = [
   (t: any) => ({ num: '01', title: t.howStep1Title, desc: t.howStep1Desc }),
   (t: any) => ({ num: '02', title: t.howStep2Title, desc: t.howStep2Desc }),
   (t: any) => ({ num: '03', title: t.howStep3Title, desc: t.howStep3Desc }),
-  (t: any) => ({ num: '04', title: t.howStep4Title, desc: t.howStep4Desc }),
-  (t: any) => ({ num: '05', title: t.howStep5Title, desc: t.howStep5Desc }),
 ]
 
 export default function HowTo() {
@@ -26,7 +24,7 @@ export default function HowTo() {
           </div>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {steps.map((s, i) => (
             <Reveal key={s.num} delay={i * 100}>
               <div className="card h-full rounded-2xl p-6 text-center">

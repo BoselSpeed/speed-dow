@@ -1,22 +1,17 @@
 import { useEffect, useState } from 'react'
-import { useI18n } from './i18n/I18nContext'
-import { bookLabels } from './i18n/translations'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Features from './components/Features'
-import Contents from './components/Contents'
-import Volumes from './components/Volumes'
 import Screenshots from './components/Screenshots'
 import HowTo from './components/HowTo'
-import Faq from './components/Faq'
+import Stats from './components/Stats'
 import Cta from './components/Cta'
 import Footer from './components/Footer'
 import DownloadWarning from './components/DownloadWarning'
 import InstallationGuideModal from './components/InstallationGuideModal'
 
 function App() {
-  const { lang, t } = useI18n()
   const [showInstall, setShowInstall] = useState(false)
 
   useEffect(() => {
@@ -30,7 +25,6 @@ function App() {
     setShowInstall(false)
   }
 
-  const convertData = t.convert(bookLabels[lang])
   const scrollToFeatures = () => {
     document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })
   }
@@ -50,13 +44,11 @@ function App() {
 
         <Features />
 
-        <Contents />
-        <Volumes convertData={convertData} />
         <Screenshots />
 
         <HowTo />
 
-        <Faq />
+        <Stats />
 
         <Cta onOpenInstall={() => setShowInstall(true)} />
       </main>

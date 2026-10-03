@@ -19,6 +19,22 @@ export interface Translation {
   statsBooks: string
   statsOffline: string
   statsProgress: string
+  statsAnchor: string
+  statsEyebrow: string
+  statsTitle: string
+  statsSubtitle: string
+  stat1Value: string
+  stat1Label: string
+  stat2Value: string
+  stat2Label: string
+  stat3Value: string
+  stat3Label: string
+  stat4Value: string
+  stat4Label: string
+  stat5Value: string
+  stat5Label: string
+  stat6Value: string
+  stat6Label: string
   aboutAnchor: string
   aboutEyebrow: string
   aboutTitle: string
@@ -152,12 +168,28 @@ const ar: Translation = {
   heroBadge: 'موسوعة فقهية بين يديك',
   heroTitle: 'تطبيق الفقه',
   heroHighlight: 'ادرس الفقه والعقيدة بطريقة منظمة',
-  heroSubtitle: 'مكتبة فقهية منظمة تضع بين يديك كتب التوحيد والعقيدة والتفسير والحديث، مع تجربة قراءة مريحة ومحتوى يمكنك الوصول إليه دون اتصال.',
+  heroSubtitle: '29 كتاباً إسلامياً في جيبك — بدون إنترنت.',
   heroDownload: 'تنزيل التطبيق',
   heroDiscover: 'اكتشف المميزات',
   statsBooks: '29 كتاباً',
   statsOffline: '9 كتب مدمجة',
   statsProgress: '8 أوسمة إنجاز',
+  statsAnchor: 'أرقام تتكلم',
+  statsEyebrow: 'أرقام تتكلم',
+  statsTitle: 'أرقام تتكلم',
+  statsSubtitle: 'أرقام تعكس حجم التطبيق ومحتواه',
+  stat1Value: '29',
+  stat1Label: 'كتاباً',
+  stat2Value: '146',
+  stat2Label: 'مجلداً',
+  stat3Value: '9',
+  stat3Label: 'كتب مدمجة',
+  stat4Value: '8',
+  stat4Label: 'أوسمة',
+  stat5Value: '5',
+  stat5Label: 'تصنيفات',
+  stat6Value: '100%',
+  stat6Label: 'مجاني',
   aboutAnchor: 'عن التطبيق',
   aboutEyebrow: 'عن التطبيق',
   aboutTitle: 'ما هو تطبيق الفقه؟',
@@ -291,12 +323,28 @@ const en: Translation = {
   heroBadge: 'An organized Fiqh library in your hands',
   heroTitle: 'Fiqh App',
   heroHighlight: 'Study Fiqh and creed in an organized way',
-  heroSubtitle: 'An organized Fiqh library that puts Tawhid, Aqeedah, Tafsir and Hadith books at your fingertips, with a comfortable reading experience and content you can access offline.',
+  heroSubtitle: '29 Islamic books in your pocket — offline.',
   heroDownload: 'Download the app',
   heroDiscover: 'Discover the features',
   statsBooks: '29 books',
   statsOffline: '9 bundled books',
   statsProgress: '8 achievement badges',
+  statsAnchor: 'By the numbers',
+  statsEyebrow: 'By the numbers',
+  statsTitle: 'By the numbers',
+  statsSubtitle: 'Numbers that reflect the app scale and content',
+  stat1Value: '29',
+  stat1Label: 'Books',
+  stat2Value: '146',
+  stat2Label: 'Volumes',
+  stat3Value: '9',
+  stat3Label: 'Bundled',
+  stat4Value: '8',
+  stat4Label: 'Badges',
+  stat5Value: '5',
+  stat5Label: 'Categories',
+  stat6Value: '100%',
+  stat6Label: 'Free',
   aboutAnchor: 'About the app',
   aboutEyebrow: 'About the app',
   aboutTitle: 'What is the Fiqh App?',
@@ -392,9 +440,9 @@ const en: Translation = {
   faq7A: 'Press the Download app button on this website to download the app file directly, then install it on your device and open it.',
   faq8Q: 'Can I track my reading progress?',
   faq8A: 'Yes. The app lets you mark lessons as complete, save favorites, and track your reading progress.',
-  ctaEyebrow: 'Start now',
-  ctaTitle: 'Download the Fiqh App now',
-  ctaSubtitle: 'Start your journey in studying Fiqh and creed with an organized library and a comfortable reading experience.',
+  ctaEyebrow: 'Download the app',
+  ctaTitle: 'Download the app',
+  ctaSubtitle: 'Choose the download link that suits you',
   ctaButton: 'Download the app',
   ctaNote: 'The file downloads directly from this website.',
   footerTagline: 'An organized Fiqh library putting Tawhid, Aqeedah, Tafsir and Hadith books at your fingertips.',
