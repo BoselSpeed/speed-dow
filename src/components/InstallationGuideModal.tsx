@@ -59,11 +59,11 @@ function renderItem(text: string) {
   const parts = text.split(/\*\*(.+?)\*\*/g)
   return parts.map((part, i) =>
     i % 2 === 1 ? (
-      <strong key={i} style={{ fontWeight: 700, color: 'var(--color-text)' }}>
+      <strong key={i} className="font-bold text-white">
         {part}
       </strong>
     ) : (
-      <span key={i}>{part}</span>
+      <span key={i} className="text-gray-300">{part}</span>
     ),
   )
 }
@@ -74,70 +74,57 @@ export default function InstallationGuideModal({ open, onClose }: InstallationGu
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
+      style={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-label="خطوات تعطيل Play Protect وتنزيل التطبيق"
     >
       <div
-        className="modal-in card relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-2xl shadow-2xl"
-        style={{ backgroundColor: 'var(--color-surface)' }}
+        className="modal-in relative flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div
-          className="flex items-center justify-between gap-3 border-b px-6 py-4"
-          style={{ borderColor: 'var(--color-border)' }}
-        >
-          <h2
-            className="flex items-center gap-2 text-lg font-bold leading-snug"
-            style={{ color: 'var(--color-text)' }}
-          >
-            <span aria-hidden="true">📱</span>
-            خطوات تعطيل Play Protect وتنزيل التطبيق
-          </h2>
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-6 py-5">
+              <h2 className="flex items-center gap-3 text-xl font-bold text-white">
+                <span aria-hidden="true" className="text-2xl">📱</span>
+                خطوات تعطيل Play Protect وتنزيل التطبيق
+              </h2>
           <button
             onClick={onClose}
             aria-label="إغلاق"
             title="إغلاق"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-xl leading-none transition-colors hover:opacity-80"
-            style={{ backgroundColor: 'var(--color-surface-2)', color: 'var(--color-text)' }}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-white/20 bg-white/5 text-xl text-white transition-all duration-300 hover:border-white/40 hover:bg-white/10"
           >
-            &times;
+            ×
           </button>
         </div>
 
-        <div className="overflow-y-auto px-6 py-5">
-          <p className="mb-5 text-sm font-medium" style={{ color: 'var(--color-text-secondary)' }}>
+        <div className="overflow-y-auto px-6 py-6">
+          <p className="mb-6 text-sm font-medium text-gray-400">
             على جهازك (Android):
           </p>
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             {steps.map((step, index) => (
               <div
                 key={index}
-                className="rounded-xl border p-4"
-                style={{ backgroundColor: 'var(--color-surface-2)', borderColor: 'var(--color-border)' }}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6"
               >
-                <h3
-                  className="mb-3 flex items-center gap-2 text-base font-semibold"
-                  style={{ color: 'var(--color-text)' }}
-                >
-                  <span aria-hidden="true" className="text-xl">
+                <h3 className="mb-4 flex items-center gap-3 text-base font-semibold text-white">
+                  <span aria-hidden="true" className="text-2xl">
                     {step.icon}
                   </span>
                   <span>{step.title}</span>
                 </h3>
-                <ol className="space-y-2">
+                <ol className="space-y-3">
                   {step.items.map((item, i) => (
-                    <li key={i} className="flex gap-2.5 text-sm leading-relaxed">
+                    <li key={i} className="flex gap-3 text-sm leading-relaxed">
                       <span
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[11px] font-bold"
-                        style={{ backgroundColor: 'var(--color-primary)', color: '#ffffff' }}
+                        className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-white text-xs font-bold text-black"
                       >
                         {i + 1}
                       </span>
-                      <span style={{ color: 'var(--color-text-secondary)' }}>{renderItem(item)}</span>
+                      <span className="text-gray-300">{renderItem(item)}</span>
                     </li>
                   ))}
                 </ol>
@@ -146,10 +133,10 @@ export default function InstallationGuideModal({ open, onClose }: InstallationGu
           </div>
         </div>
 
-        <div className="border-t px-6 py-4" style={{ borderColor: 'var(--color-border)' }}>
+        <div className="border-t border-white/10 px-6 py-4">
           <button
             onClick={onClose}
-            className="btn-primary w-full rounded-xl px-6 py-3 text-base font-semibold"
+            className="btn-primary w-full rounded-xl bg-white px-6 py-3 text-base font-bold text-black"
           >
             فهمت، أُكمل
           </button>

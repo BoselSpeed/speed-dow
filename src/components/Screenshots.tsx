@@ -17,25 +17,37 @@ export default function Screenshots() {
   ]
 
   return (
-    <section id="gallery" className="relative py-20 sm:py-28" style={{ backgroundColor: 'var(--color-surface)' }}>
-      <div className="geo-dots pointer-events-none absolute inset-0 opacity-[0.35]" aria-hidden="true" />
+    <section id="gallery" className="relative bg-black py-24 sm:py-32">
+      <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+        <div className="absolute left-1/3 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-gradient-to-b from-white/10 to-transparent blur-3xl" />
+      </div>
+
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <span className="text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--color-text-secondary)' }}>{t.screenshotsEyebrow}</span>
-            <h2 className="mt-3 text-3xl font-extrabold sm:text-4xl" style={{ color: 'var(--color-text)' }}>{t.screenshotsTitle}</h2>
-            <p className="mt-4 text-lg" style={{ color: 'var(--color-text-secondary)' }}>{t.screenshotsSubtitle}</p>
+            <span className="text-sm font-bold uppercase tracking-[0.2em] text-gray-400">{t.screenshotsEyebrow}</span>
+            <h2 className="mt-4 text-4xl font-extrabold text-white sm:text-5xl">{t.screenshotsTitle}</h2>
+            <p className="mt-4 text-lg text-gray-400">{t.screenshotsSubtitle}</p>
           </div>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-3">
+        <div className="mt-20 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-3">
           {books.map((book, i) => {
             const title = lang === 'ar' ? book.ar : book.en
             return (
               <Reveal key={book.ar} delay={i * 80}>
-                <div className="card rounded-2xl p-4 text-center">
-                  <img src={book.cover} alt={title} className="mx-auto h-48 w-auto rounded-lg object-cover shadow-lg" loading="lazy" />
-                  <h3 className="mt-3 text-sm font-bold" style={{ color: 'var(--color-text)' }}>{title}</h3>
+                <div className="screenshot-card group cursor-pointer">
+                  <div className="relative overflow-hidden rounded-2xl bg-gray-900">
+                    <img
+                      src={book.cover}
+                      alt={title}
+                      className="h-64 w-full object-cover sm:h-80"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 z-10 flex items-end p-6 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                      <h3 className="text-lg font-bold text-white">{title}</h3>
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             )
