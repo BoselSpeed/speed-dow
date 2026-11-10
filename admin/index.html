@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم الإدارية - نادي متعدد المجالات | ENS سوڨر تيارت</title>
+  <meta name="description" content="لوحة التحكم الإدارية لعرض وإدارة تسجيلات نادي متعدد المجالات" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%85%3C/text%3E%3C/svg%3E" />
+  <style>
+    /* Admin specific styles */
+    .admin-wrapper {
+      display: flex;
+      min-height: 100vh;
+      background-color: var(--color-surface);
+    }
+
+    .admin-sidebar {
+      width: 260px;
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      padding: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      flex-shrink: 0;
+    }
+
+    .admin-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .admin-brand .logo-mark {
+      font-size: 2rem;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+    }
+
+    .admin-brand .admin-title {
+      font-family: var(--font-heading);
+      font-weight: var(--fw-bold);
+      font-size: 1.25rem;
+      color: var(--color-white);
+    }
+
+    .admin-nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .admin-nav a {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      color: rgba(255,255,255,0.8);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: var(--transition-fast);
+    }
+
+    .admin-nav a:hover,
+    .admin-nav a.active {
+      background-color: rgba(255,255,255,0.1);
+      color: var(--color-white);
+    }
+
+    .admin-nav a.active {
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .admin-main {
+      flex: 1;
+      padding: var(--space-xl);
+      overflow-y: auto;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .admin-header h1 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      color: var(--color-primary);
+    }
+
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .stat-card {
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .stat-icon {
+      font-size: 2rem;
+      color: var(--color-secondary);
+    }
+
+    .stat-content h3 {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-xs);
+      text-transform: uppercase;
+    }
+
+    .stat-content .stat-value {
+      font-size: 1.75rem;
+      font-weight: var(--fw-bold);
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+
+    .admin-table-wrap {
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: var(--space-md);
+      text-align: right;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .admin-table th {
+      background-color: var(--color-surface);
+      font-weight: var(--fw-semibold);
+      color: var(--color-primary);
+      font-size: 0.9rem;
+    }
+
+    .admin-table td {
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .admin-table tr:hover {
+      background-color: var(--color-surface);
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: var(--fw-semibold);
+      text-transform: uppercase;
+    }
+
+    .status-pending {
+      background-color: #FFF3CD;
+      color: #856404;
+    }
+
+    .status-approved {
+      background-color: #D4EDDA;
+      color: #155724;
+    }
+
+    .status-rejected {
+      background-color: #F8D7DA;
+      color: #721C24;
+    }
+
+    .btn-danger {
+      background-color: #DC3545;
+      color: var(--color-white);
+    }
+
+    .btn-danger:hover {
+      background-color: #B02A37;
+    }
+
+    .btn-sm {
+      padding: 4px 10px;
+      font-size: 0.85rem;
+    }
+
+    .admin-login {
+      max-width: 400px;
+      margin: 10vh auto;
+      padding: var(--space-xl);
+      background: var(--color-background);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+
+    .admin-login h1 {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+      color: var(--color-primary);
+      font-family: var(--font-heading);
+    }
+
+    .admin-login .form-group {
+      margin-bottom: var(--space-md);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: var(--space-xl);
+      color: var(--color-text-muted);
+    }
+
+    .empty-state .empty-icon {
+      font-size: 4rem;
+      margin-bottom: var(--space-md);
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .admin-wrapper {
+        flex-direction: column;
+      }
+      .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: var(--space-md);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .admin-nav {
+        flex-direction: row;
+        gap: var(--space-sm);
+      }
+      .admin-main {
+        padding: var(--space-md);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Admin Login Screen -->
+  <div id="admin-login-screen" class="admin-login">
+    <h1>تسجيل دخول الأدمن</h1>
+    <form id="admin-login-form">
+      <div class="form-group">
+        <label for="admin-password">كلمة المرور الإدارية</label>
+        <input type="password" id="admin-password" name="admin-password" required placeholder="أدخل كلمة المرور" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-full">تسجيل الدخول</button>
+    </form>
+    <p style="text-align:center; margin-top: var(--space-md); font-size: 0.85rem; color: var(--color-text-muted);">
+      مخصص لمدير موقع نادي متعدد المجالات فقط
+    </p>
+  </div>
+
+  <!-- Admin Dashboard (hidden until login) -->
+  <div id="admin-dashboard" style="display:none;">
+    <div class="admin-wrapper">
+      <aside class="admin-sidebar">
+        <div class="admin-brand">
+          <span class="logo-mark">ن</span>
+          <span class="admin-title">لوحة التحكم</span>
+        </div>
+        <nav class="admin-nav">
+          <a href="#" class="active" onclick="showSection('submissions')">التسجيلات</a>
+          <a href="#" onclick="showSection('stats')">الإحصائيات</a>
+          <a href="#" onclick="logout()">تسجيل الخروج</a>
+        </nav>
+      </aside>
+
+      <main class="admin-main">
+        <div class="admin-header">
+          <div>
+            <h1 id="section-title">إدارة التسجيلات</h1>
+            <p id="section-subtitle" style="color: var(--color-text-muted); font-size: 0.95rem;">عرض وإدارة جميع طلبات الانضمام الواردة</p>
+          </div>
+          <div style="display:flex; gap: var(--space-sm);">
+            <button class="btn btn-outline btn-sm" onclick="exportData()">تصدير البيانات</button>
+            <button class="btn btn-danger btn-sm" onclick="clearAllData()">مسح الكل</button>
+          </div>
+        </div>
+
+        <!-- Stats Section -->
+        <section id="stats-section" style="display:none;">
+          <div class="admin-stats">
+            <div class="stat-card">
+              <div class="stat-icon">📋</div>
+              <div class="stat-content">
+                <h3>إجمالي التسجيلات</h3>
+                <div class="stat-value" id="stat-total">0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⏳</div>
+              <div class="stat-content">
+                <h3>معلقة</h3>
+                <div class="stat-value" id="stat-pending">0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-content">
+                <h3>مقبولة</h3>
+                <div class="stat-value" id="stat-approved">0</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❌</div>
+              <div class="stat-content">
+                <h3>مرفوضة</h3>
+                <div class="stat-value" id="stat-rejected">0</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Submissions Section -->
+        <section id="submissions-section">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>الاسم</th>
+                  <td>البريد الإلكتروني</td>
+                  <td>التخصص</td>
+                  <td>السنة الدراسية</td>
+                  <td>تاريخ التسجيل</td>
+                  <td>الحالة</td>
+                  <td>الإجراءات</td>
+                </tr>
+              </thead>
+              <tbody id="submissions-table-body">
+                <!-- Rows inserted via JS -->
+              </tbody>
+            </table>
+          </div>
+          <div id="submissions-empty" class="empty-state" style="display:none;">
+            <span class="empty-icon">📭</span>
+            <p>لا توجد تسجيلات حتى الآن.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Simple admin password (in production this would be server-side)
+    const ADMIN_PASSWORD = 'admin123';
+
+    // Check if already logged in
+    if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+      document.getElementById('admin-login-screen').style.display = 'none';
+      document.getElementById('admin-dashboard').style.display = 'block';
+      loadSubmissions();
+    }
+
+    // Admin login
+    document.getElementById('admin-login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('admin-password').value;
+      if (password === ADMIN_PASSWORD) {
+        sessionStorage.setItem('adminLoggedIn', 'true');
+        document.getElementById('admin-login-screen').style.display = 'none';
+        document.getElementById('admin-dashboard').style.display = 'block';
+        loadSubmissions();
+      } else {
+        alert('كلمة المرور غير صحيحة');
+      }
+    });
+
+    // Load submissions from localStorage
+    function loadSubmissions() {
+      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      const tbody = document.getElementById('submissions-table-body');
+      const emptyState = document.getElementById('submissions-empty');
+      const tableWrap = document.querySelector('.admin-table-wrap');
+
+      // Update stats
+      document.getElementById('stat-total').textContent = submissions.length;
+      document.getElementById('stat-pending').textContent = submissions.filter(s => s.status === 'pending').length;
+      document.getElementById('stat-approved').textContent = submissions.filter(s => s.status === 'approved').length;
+      document.getElementById('stat-rejected').textContent = submissions.filter(s => s.status === 'rejected').length;
+
+      if (submissions.length === 0) {
+        tableWrap.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+      }
+
+      tableWrap.style.display = 'block';
+      emptyState.style.display = 'none';
+      tbody.innerHTML = '';
+
+      submissions.slice().reverse().forEach((sub, index) => {
+        const row = document.createElement('tr');
+        const statusClass = 'status-' + sub.status;
+        row.innerHTML = `
+          <td><strong>${escapeHtml(sub.fullName)}</strong></td>
+          <td>${escapeHtml(sub.email)}</td>
+          <td>${escapeHtml(sub.department)}</td>
+          <td>${escapeHtml(sub.year)}</td>
+          <td>${sub.date}</td>
+          <td><span class="status-badge ${statusClass}">${getStatusLabel(sub.status)}</span></td>
+          <td>
+            <button class="btn btn-sm btn-outline" onclick="changeStatus(${index}, 'pending')">معلق</button>
+            <button class="btn btn-sm btn-primary" onclick="changeStatus(${index}, 'approved')">مقبول</button>
+            <button class="btn btn-sm btn-danger" onclick="changeStatus(${index}, 'rejected')">مرفوض</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteSubmission(${index})">حذف</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function getStatusLabel(status) {
+      const labels = { pending: 'معلق', approved: 'مقبول', rejected: 'مرفوض' };
+      return labels[status] || status;
+    }
+
+    function changeStatus(index, status) {
+      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      submissions[index].status = status;
+      localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
+      loadSubmissions();
+    }
+
+    function deleteSubmission(index) {
+      if (!confirm('هل أنت متأكد من حذف هذا التسجيل؟')) return;
+      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      submissions.splice(index, 1);
+      localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
+      loadSubmissions();
+    }
+
+    function clearAllData() {
+      if (!confirm('هل أنت متأكد من مسح جميع التسجيلات؟ هذا الإجراء غير قابل للرجوع.')) return;
+      localStorage.removeItem('club_aris_submissions');
+      loadSubmissions();
+    }
+
+    function exportData() {
+      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      if (submissions.length === 0) {
+        alert('لا توجد بيانات للتصدير');
+        return;
+      }
+      const dataStr = JSON.stringify(submissions, null, 2);
+      const dataUri = 'data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);
+      const exportFileName = 'club-submissions-'+new Date().toISOString().slice(0,10)+'.json';
+      const linkElement = document.createElement('a');
+      linkElement.setAttribute('href', dataUri);
+      linkElement.setAttribute('download', exportFileName);
+      linkElement.click();
+    }
+
+    function showSection(section) {
+      document.getElementById('stats-section').style.display = 'none';
+      document.getElementById('submissions-section').style.display = 'none';
+      document.getElementById(section + '-section').style.display = 'block';
+      
+      document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+      
+      if (section === 'submissions') loadSubmissions();
+      document.getElementById('section-title').textContent = section === 'submissions' ? 'إدارة التسجيلات' : 'الإحصائيات';
+    }
+
+    function logout() {
+      sessionStorage.removeItem('adminLoggedIn');
+      location.reload();
+    }
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /* ============================================================
-   Club Aris – Static Website
+   نادي متعدد المجالات - المدرسة العليا للأساتذة ملحقة سوڨر تيارت
    JavaScript (simple, no framework)
    ============================================================ */
 
@@ -17,7 +17,6 @@
       mainNav.classList.toggle("open");
     });
 
-    // Close menu when clicking a nav link
     const navLinks = mainNav.querySelectorAll("a");
     navLinks.forEach(function (link) {
       link.addEventListener("click", function () {
@@ -26,7 +25,6 @@
       });
     });
 
-    // Close menu on Escape key
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && mainNav.classList.contains("open")) {
         menuToggle.setAttribute("aria-expanded", "false");
@@ -35,48 +33,165 @@
     });
   }
 
-  // ---------- Contact Form (static demo) ----------
-  const contactForm = document.querySelector(".contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-
-      submitBtn.textContent = "جاري الإرسال...";
-      submitBtn.disabled = true;
-
-      // Simulate form submission (static site - no backend)
-      setTimeout(function () {
-        submitBtn.textContent = "تم الإرسال بنجاح";
-        submitBtn.style.backgroundColor = "#2e7d32";
-
-        setTimeout(function () {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.backgroundColor = "";
-          contactForm.reset();
-        }, 2000);
-      }, 1000);
-    });
-  }
-
   // ---------- Header scroll effect ----------
   const header = document.getElementById("header");
-  let lastScrollY = window.scrollY;
+  if (header) {
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (window.scrollY > 50) {
+          header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
+        } else {
+          header.style.boxShadow = "none";
+        }
+      },
+      { passive: true }
+    );
+  }
 
-  window.addEventListener(
-    "scroll",
-    function () {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > 50) {
-        header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
+  // ---------- Registration Form (multi-step) ----------
+  const form = document.getElementById("registration-form");
+  if (form) {
+    const sections = form.querySelectorAll(".form-section");
+    const progressSteps = form.querySelectorAll(".progress-step");
+    const btnPrev = document.getElementById("btn-prev");
+    const btnNext = document.getElementById("btn-next");
+    const btnSubmit = document.getElementById("btn-submit");
+    const successMsg = document.getElementById("form-success");
+
+    let currentSection = 0;
+
+    function showSection(index) {
+      sections.forEach((sec, i) => {
+        sec.classList.toggle("active", i === index);
+      });
+      progressSteps.forEach((step, i) => {
+        step.classList.toggle("current", i === index);
+      });
+      btnPrev.style.display = index === 0 ? "none" : "inline-flex";
+      if (index === sections.length - 1) {
+        btnNext.style.display = "none";
+        btnSubmit.style.display = "inline-flex";
       } else {
-        header.style.boxShadow = "none";
+        btnNext.style.display = "inline-flex";
+        btnSubmit.style.display = "none";
       }
-      lastScrollY = currentScrollY;
-    },
-    { passive: true }
-  );
+    }
+
+    function validateSection(index) {
+      const section = sections[index];
+      const inputs = section.querySelectorAll("input[required], select[required], textarea[required]");
+      let valid = true;
+      inputs.forEach(function (input) {
+        const errorEl = document.getElementById("error-" + input.id);
+        if (!input.value.trim()) {
+          input.classList.add("input-error");
+          if (errorEl) errorEl.textContent = "هذا الحقل مطلوب";
+          valid = false;
+        } else {
+          input.classList.remove("input-error");
+          if (errorEl) errorEl.textContent = "";
+        }
+      });
+
+      // Email validation
+      const email = section.querySelector('input[type="email"][required]');
+      if (email && email.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value)) {
+          email.classList.add("input-error");
+          const errorEl = document.getElementById("error-email");
+          if (errorEl) errorEl.textContent = "الرجاء إدخال بريد إلكتروني صحيح";
+          valid = false;
+        }
+      }
+
+      // Terms checkbox
+      const terms = section.querySelector('#terms');
+      if (terms && !terms.checked) {
+        terms.classList.add("input-error");
+        const errorEl = document.getElementById("error-terms");
+        if (errorEl) errorEl.textContent = "يجب الموافقة على الشروط والأحكام";
+        valid = false;
+      }
+
+      return valid;
+    }
+
+    if (btnNext) {
+      btnNext.addEventListener("click", function () {
+        if (validateSection(currentSection)) {
+          if (currentSection < sections.length - 1) {
+            currentSection++;
+            showSection(currentSection);
+          }
+        }
+      });
+    }
+
+    if (btnPrev) {
+      btnPrev.addEventListener("click", function () {
+        if (currentSection > 0) {
+          currentSection--;
+          showSection(currentSection);
+        }
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!validateSection(currentSection)) return;
+
+      const formData = new FormData(form);
+      const submission = {
+        id: Date.now(),
+        fullName: formData.get("full-name"),
+        email: formData.get("email"),
+        phone: formData.get("phone"),
+        studentId: formData.get("student-id"),
+        department: formData.get("department"),
+        year: formData.get("year"),
+        interest: formData.getAll("interest"),
+        motivation: formData.get("motivation"),
+        skills: formData.get("skills"),
+        status: "pending",
+        date: new Date().toLocaleString("ar-SA")
+      };
+
+      // Store in localStorage
+      const existing = JSON.parse(localStorage.getItem("club_submissions") || "[]");
+      existing.push(submission);
+      localStorage.setItem("club_submissions", JSON.stringify(existing));
+
+      // Show success
+      form.style.display = "none";
+      if (successMsg) successMsg.style.display = "block";
+    });
+
+    // Initialize first section
+    showSection(0);
+  }
+
+  // ---------- Accessibility: focus styles ----------
+  document.addEventListener("DOMContentLoaded", function () {
+    const style = document.createElement("style");
+    style.textContent = `
+      .input-error {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2) !important;
+      }
+      .btn-full {
+        width: 100%;
+      }
+    `;
+    document.head.appendChild(style);
+  });
+
+  // ---------- Reduced motion ----------
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.style.setProperty("--transition-fast", "0.01ms");
+    document.documentElement.style.setProperty("--transition-base", "0.01ms");
+    document.documentElement.style.scrollBehavior = "auto";
+  }
 })();
