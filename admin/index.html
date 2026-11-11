@@ -294,8 +294,8 @@
           <span class="admin-title">لوحة التحكم</span>
         </div>
         <nav class="admin-nav">
-          <a href="#" class="active" onclick="showSection('submissions')">التسجيلات</a>
-          <a href="#" onclick="showSection('stats')">الإحصائيات</a>
+          <a href="#" class="active" onclick="showSection('submissions', event)">التسجيلات</a>
+          <a href="#" onclick="showSection('stats', event)">الإحصائيات</a>
           <a href="#" onclick="logout()">تسجيل الخروج</a>
         </nav>
       </aside>
@@ -402,7 +402,7 @@
 
     // Load submissions from localStorage
     function loadSubmissions() {
-      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       const tbody = document.getElementById('submissions-table-body');
       const emptyState = document.getElementById('submissions-empty');
       const tableWrap = document.querySelector('.admin-table-wrap');
@@ -456,7 +456,7 @@
     }
 
     function changeStatus(index, status) {
-      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       submissions[index].status = status;
       localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
       loadSubmissions();
@@ -464,7 +464,7 @@
 
     function deleteSubmission(index) {
       if (!confirm('هل أنت متأكد من حذف هذا التسجيل؟')) return;
-      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       submissions.splice(index, 1);
       localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
       loadSubmissions();
@@ -477,7 +477,7 @@
     }
 
     function exportData() {
-      const submissions = JSON.parse(localStorage.getItem('club_aris_submissions') || '[]');
+      const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       if (submissions.length === 0) {
         alert('لا توجد بيانات للتصدير');
         return;
@@ -491,13 +491,15 @@
       linkElement.click();
     }
 
-    function showSection(section) {
+    function showSection(section, evt) {
       document.getElementById('stats-section').style.display = 'none';
       document.getElementById('submissions-section').style.display = 'none';
       document.getElementById(section + '-section').style.display = 'block';
       
       document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
-      event.target.classList.add('active');
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      }
       
       if (section === 'submissions') loadSubmissions();
       document.getElementById('section-title').textContent = section === 'submissions' ? 'إدارة التسجيلات' : 'الإحصائيات';
