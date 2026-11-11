@@ -34,7 +34,7 @@
       align-items: center;
       gap: var(--space-sm);
       padding-bottom: var(--space-lg);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .admin-brand .logo-mark {
@@ -67,7 +67,7 @@
       align-items: center;
       gap: var(--space-sm);
       padding: var(--space-sm) var(--space-md);
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.8);
       border-radius: var(--radius-sm);
       font-family: var(--font-body);
       font-size: 0.95rem;
@@ -76,7 +76,7 @@
 
     .admin-nav a:hover,
     .admin-nav a.active {
-      background-color: rgba(255,255,255,0.1);
+      background-color: rgba(255, 255, 255, 0.1);
       color: var(--color-white);
     }
 
@@ -102,7 +102,7 @@
     .admin-header h1 {
       font-family: var(--font-heading);
       font-size: 1.75rem;
-      color: var(--color-primary);
+      color: var(--color-primary-dark);
     }
 
     .admin-stats {
@@ -114,12 +114,17 @@
 
     .stat-card {
       background: var(--color-background);
-      border: 1px solid var(--color-border);
+      border: 2px solid var(--color-border);
       border-radius: var(--radius-md);
       padding: var(--space-lg);
       display: flex;
       align-items: center;
       gap: var(--space-md);
+    }
+
+    .stat-card:hover {
+      border-color: var(--color-accent);
+      transform: translateY(-2px);
     }
 
     .stat-icon {
@@ -137,13 +142,13 @@
     .stat-content .stat-value {
       font-size: 1.75rem;
       font-weight: var(--fw-bold);
-      color: var(--color-primary);
+      color: var(--color-primary-dark);
       font-family: var(--font-heading);
     }
 
     .admin-table-wrap {
       background: var(--color-background);
-      border: 1px solid var(--color-border);
+      border: 2px solid var(--color-border);
       border-radius: var(--radius-md);
       overflow: hidden;
     }
@@ -163,7 +168,7 @@
     .admin-table th {
       background-color: var(--color-surface);
       font-weight: var(--fw-semibold);
-      color: var(--color-primary);
+      color: var(--color-primary-dark);
       font-size: 0.9rem;
     }
 
@@ -201,12 +206,12 @@
     }
 
     .btn-danger {
-      background-color: #DC3545;
+      background-color: #B71C1C;
       color: var(--color-white);
     }
 
     .btn-danger:hover {
-      background-color: #B02A37;
+      background-color: #7F0000;
     }
 
     .btn-sm {
@@ -219,15 +224,15 @@
       margin: 10vh auto;
       padding: var(--space-xl);
       background: var(--color-background);
-      border: 1px solid var(--color-border);
+      border: 2px solid var(--color-border);
       border-radius: var(--radius-lg);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 8px 24px rgba(62, 39, 35, 0.1);
     }
 
     .admin-login h1 {
       text-align: center;
       margin-bottom: var(--space-lg);
-      color: var(--color-primary);
+      color: var(--color-primary-dark);
       font-family: var(--font-heading);
     }
 
@@ -256,7 +261,7 @@
         flex-direction: row;
         overflow-x: auto;
         padding: var(--space-md);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(62, 39, 35, 0.1);
       }
       .admin-nav {
         flex-direction: row;
@@ -458,7 +463,7 @@
     function changeStatus(index, status) {
       const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       submissions[index].status = status;
-      localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
+      localStorage.setItem('club_submissions', JSON.stringify(submissions));
       loadSubmissions();
     }
 
@@ -466,13 +471,13 @@
       if (!confirm('هل أنت متأكد من حذف هذا التسجيل؟')) return;
       const submissions = JSON.parse(localStorage.getItem('club_submissions') || '[]');
       submissions.splice(index, 1);
-      localStorage.setItem('club_aris_submissions', JSON.stringify(submissions));
+      localStorage.setItem('club_submissions', JSON.stringify(submissions));
       loadSubmissions();
     }
 
     function clearAllData() {
       if (!confirm('هل أنت متأكد من مسح جميع التسجيلات؟ هذا الإجراء غير قابل للرجوع.')) return;
-      localStorage.removeItem('club_aris_submissions');
+      localStorage.removeItem('club_submissions');
       loadSubmissions();
     }
 
@@ -483,8 +488,8 @@
         return;
       }
       const dataStr = JSON.stringify(submissions, null, 2);
-      const dataUri = 'data:application/json;charset=utf-8,'+encodeURIComponent(dataStr);
-      const exportFileName = 'club-submissions-'+new Date().toISOString().slice(0,10)+'.json';
+      const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+      const exportFileName = 'club-submissions-' + new Date().toISOString().slice(0, 10) + '.json';
       const linkElement = document.createElement('a');
       linkElement.setAttribute('href', dataUri);
       linkElement.setAttribute('download', exportFileName);
@@ -495,12 +500,12 @@
       document.getElementById('stats-section').style.display = 'none';
       document.getElementById('submissions-section').style.display = 'none';
       document.getElementById(section + '-section').style.display = 'block';
-      
+
       document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
       if (evt && evt.target) {
         evt.target.classList.add('active');
       }
-      
+
       if (section === 'submissions') loadSubmissions();
       document.getElementById('section-title').textContent = section === 'submissions' ? 'إدارة التسجيلات' : 'الإحصائيات';
     }

@@ -40,9 +40,9 @@
       "scroll",
       function () {
         if (window.scrollY > 50) {
-          header.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.08)";
+          header.style.boxShadow = "0 4px 12px rgba(62, 39, 35, 0.15)";
         } else {
-          header.style.boxShadow = "none";
+          header.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.1)";
         }
       },
       { passive: true }
@@ -173,13 +173,32 @@
     showSection(0);
   }
 
+  // ---------- Placeholder Links ----------
+  const PLACEHOLDER_LINKS = {
+    PLACEHOLDER_LINK_1: "#",
+    PLACEHOLDER_LINK_2: "#",
+    PLACEHOLDER_LINK_3: "#",
+    PLACEHOLDER_LINK_4: "#"
+  };
+
+  function initPlaceholderLinks() {
+    document.querySelectorAll('[data-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-placeholder');
+      if (PLACEHOLDER_LINKS[key]) {
+        el.href = PLACEHOLDER_LINKS[key];
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initPlaceholderLinks);
+
   // ---------- Accessibility: focus styles ----------
   document.addEventListener("DOMContentLoaded", function () {
     const style = document.createElement("style");
     style.textContent = `
       .input-error {
-        border-color: #dc3545 !important;
-        box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.2) !important;
+        border-color: #B71C1C !important;
+        box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.2) !important;
       }
       .btn-full {
         width: 100%;
