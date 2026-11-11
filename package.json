@@ -1,0 +1,23 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "موقع إلكتروني ثابت (Static Website) لنادي متعدد المجالات في المدرسة العليا للأساتذة ملحقة سوڨر تيارت، ولاية تيارت، الجزائر.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BoselSpeed/speed-dow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BoselSpeed/speed-dow/issues"
+  },
+  "homepage": "https://github.com/BoselSpeed/speed-dow#readme",
+  "dependencies": {
+    "motion": "^14.12.0"
+  }
+}

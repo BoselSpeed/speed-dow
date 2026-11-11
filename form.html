@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نموذج الانضمام - نادي متعدد المجالات | ENS سوڨر تيارت</title>
-  <meta name="description" content="نموذج الانضمام لنادي متعدد المجالات - المدرسة العليا للأساتذة ملحقة سوڨر تيارت" />
+  <title>استمارة التسجيل في نادي ARIS</title>
+  <meta name="description" content="أستمارة التسجيل في نادي ARIS - انضـم إلينا وساهم في أنشطتنا وفعالياتنا" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
@@ -16,9 +16,9 @@
 
   <header class="site-header" id="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo" aria-label="نادي متعدد المجالات - الصفحة الرئيسية">
+      <a href="index.html" class="logo" aria-label="نادي ARIS - الصفحة الرئيسية">
         <span class="logo-mark">ن</span>
-        <span class="logo-text">نادي متعدد المجالات</span>
+        <span class="logo-text">نادي ARIS</span>
       </a>
 
       <nav class="main-nav" id="main-nav">
@@ -48,11 +48,11 @@
       <div class="container form-header-inner">
         <div class="form-brand">
           <span class="logo-mark">ن</span>
-          <span class="logo-text">نادي متعدد المجالات</span>
+          <span class="logo-text">نادي ARIS</span>
         </div>
         <div class="form-info">
-          <h1 class="form-title">نموذج الانضمام والتسجيل</h1>
-          <p class="form-desc">المدرسة العليا للأساتذة ملحقة سوڨر تيارت - نادي متعدد التخصصات والمجالات</p>
+          <h1 class="form-title">أستمارة التسجيل في نادي ARIS</h1>
+          <p class="form-desc">مرحبًا بكم في نادي ARIS 🌟 هذه الاستمارة مخصصة للجميع للانضمام إلى النادي والمساهمة في أنشطته وفعالياته. يرجى الحصول على المعلومات بدقة للحصول على فريق عمل واحد فقط، مع إمكانية اختيار عدة مجالات للنشاطات.</p>
         </div>
       </div>
     </section>
@@ -63,8 +63,9 @@
         <form id="registration-form" novalidate>
           <div class="form-progress">
             <span class="progress-step current">البيانات الشخصية</span>
-            <span class="progress-step">التخصص والمجال</span>
-            <span class="progress-step">إتمام التسجيل</span>
+            <span class="progress-step">المجموعة والتخصص</span>
+            <span class="progress-step">الفريق والاهتمامات</span>
+            <span class="progress-step">الرسالة والإ confirmation</span>
           </div>
 
           <div class="form-sections">
@@ -74,15 +75,9 @@
               <p class="form-section-desc">يرجى إدخال بياناتك الشخصية بدقة.</p>
 
               <div class="form-group">
-                <label for="full-name">الاسم الكامل <span class="required">*</span></label>
-                <input type="text" id="full-name" name="full-name" required placeholder="أدخل اسمك الكامل" />
+                <label for="full-name">الاسم و اللقب <span class="required">*</span></label>
+                <input type="text" id="full-name" name="full-name" required placeholder="أدخل اسمك و لقبك" />
                 <span class="error-message" id="error-full-name"></span>
-              </div>
-
-              <div class="form-group">
-                <label for="email">البريد الإلكتروني <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required placeholder="example@email.com" />
-                <span class="error-message" id="error-email"></span>
               </div>
 
               <div class="form-group">
@@ -92,91 +87,216 @@
               </div>
 
               <div class="form-group">
-                <label for="student-id">رقم التسجيل الجامعي <span class="required">*</span></label>
-                <input type="text" id="student-id" name="student-id" required placeholder="أدخل رقم التسجيل الجامعي" />
-                <span class="error-message" id="error-student-id"></span>
+                <label for="birth-date">تاريخ الميلاد <span class="required">*</span></label>
+                <input type="date" id="birth-date" name="birth-date" required />
+                <span class="error-message" id="error-birth-date"></span>
               </div>
             </div>
 
-            <!-- Section 2: Field & Major -->
+            <!-- Section 2: Group & Specialization -->
             <div class="form-section" id="section-2">
-              <h2 class="form-section-title">التخصص والمجال</h2>
-              <p class="form-section-desc">اختر التخصص والمجال الذي تنتمي إليه.</p>
+              <h2 class="form-section-title">المجموعة والتخصص</h2>
+              <p class="form-section-desc">اختر مجموعتك وتخصصك.</p>
 
               <div class="form-group">
-                <label for="department">القسم / التخصص <span class="required">*</span></label>
-                <select id="department" name="department" required>
+                <fieldset>
+                  <legend>المجموعة <span class="required">*</span></legend>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input type="radio" name="group" value="أ" required /> أ
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="group" value="ب" /> ب
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="group" value="أخرى" /> أخرى:
+                      <input type="text" name="group-other" placeholder="حدد المجموعة" />
+                    </label>
+                  </div>
+                </fieldset>
+                <span class="error-message" id="error-group"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="specialization">التخصص <span class="required">*</span></label>
+                <select id="specialization" name="specialization" required>
                   <option value="">اختر التخصص</option>
-                  <option value="العلوم التربوية">العلوم التربوية</option>
-                  <option value="الرياضيات">الرياضيات</option>
-                  <option value="العلوم الطبيعية والحياة">العلوم الطبيعية والحياة</option>
-                  <option value="العلوم الإنسانية والاجتماعية">العلوم الإنسانية والاجتماعية</option>
-                  <option value="التكنولوجيا والمعلومات">التكنولوجيا والمعلومات</option>
-                  <option value="اللغات والآداب">اللغات والآداب</option>
-                  <option value="أخرى">أخرى</option>
+                  <option value="لغة عربية ابتدائي">لغة عربية ابتدائي</option>
+                  <option value="لغة عربية متوسط">لغة عربية متوسط</option>
+                  <option value="لغة فرنسية ابتدائي">لغة فرنسية ابتدائي</option>
+                  <option value="رياضيات ثانوي">رياضيات ثانوي</option>
+                  <option value="فيزياء ثانوي">فيزياء ثانوي</option>
+                  <option value="رسم متوسط">رسم متوسط</option>
+                  <option value="رسم ثانوي">رسم ثانوي</option>
+                  <option value="أخرى">أخرى:</option>
                 </select>
-                <span class="error-message" id="error-department"></span>
+                <input type="text" id="specialization-other" name="specialization-other" placeholder="حدد التخصص الآخر" style="display:none; margin-top: var(--space-xs);" />
+                <span class="error-message" id="error-specialization"></span>
               </div>
 
               <div class="form-group">
-                <label for="year">السنة الدراسية <span class="required">*</span></label>
-                <select id="year" name="year" required>
-                  <option value="">اختر السنة الدراسية</option>
-                  <option value="السنة الأولى">السنة الأولى</option>
-                  <option value="السنة الثانية">السنة الثانية</option>
-                  <option value="السنة الثالثة">السنة الثالثة</option>
-                  <option value="السنة الرابعة">السنة الرابعة</option>
-                  <option value="ماجستير">ماجستير</option>
-                  <option value="دكتوراه">دكتوراه</option>
+                <label for="fوج">الفوج <span class="required">*</span></label>
+                <select id="fوج" name="fوج" required>
+                  <option value="">اختر الفوج</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="أخرى">أخرى:</option>
                 </select>
-                <span class="error-message" id="error-year"></span>
+                <input type="text" id="fوج-other" name="fوج-other" placeholder="حدد الفوج الآخر" style="display:none; margin-top: var(--space-xs);" />
+                <span class="error-message" id="error-fوج"></span>
+              </div>
+            </div>
+
+            <!-- Section 3: Team & Interests -->
+            <div class="form-section" id="section-3">
+              <h2 class="form-section-title">الفريق والاهتمامات</h2>
+              <p class="form-section-desc">اختر الفريق الذي ترغب في الانضمام إليه واهتماماتك.</p>
+
+              <div class="form-group">
+                <fieldset>
+                  <legend>في أي فريق ترغب في الانضمام؟ اختر فريقا واحدا <span class="required">*</span></legend>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="الإعداد و الإخراج" required /> الإعداد و الإخراج
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="التنظيم" /> التنظيم
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="العلاقات الداخلية" /> العلاقات الداخلية
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="العلاقات الخارجية" /> العلاقات الخارجية
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="المراقبة و التنسيق" /> المراقبة و التنسيق
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="التصوير" /> التصوير
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="المالية و المستلزمات" /> المالية و المستلزمات
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="العتاد" /> العتاد
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="النشاطات" /> النشاطات
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="الاستقبال" /> الاستقبال
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="الفريق التقني" /> الفريق التقني
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="team" value="أخرى" /> أخرى:
+                      <input type="text" name="team-other" placeholder="حدد الفريق الآخر" />
+                    </label>
+                  </div>
+                </fieldset>
+                <span class="error-message" id="error-team"></span>
               </div>
 
               <div class="form-group">
-                <label for="interest">مجالات اهتمامك (يمكن اختيار أكثر من واحد)</label>
+                <label for="questions">أكتب أسئلة لديك</label>
+                <textarea id="questions" name="questions" rows="3" placeholder="إذا كانت لديك أي أسئلة، أكتبها هنا..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="activities">أي نشاط ترغب في ممارسته؟ <span class="required">*</span></label>
                 <div class="checkbox-group">
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="البحث العلمي" /> البحث العلمي
+                    <input type="checkbox" name="activities" value="اللغة العربية و الكتابة" required /> اللغة العربية و الكتابة
                   </label>
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="الأنشطة الثقافية" /> الأنشطة الثقافية
+                    <input type="checkbox" name="activities" value="الإعلام الآلي" /> الإعلام الآلي
                   </label>
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="الأنشطة الرياضية" /> الأنشطة الرياضية
+                    <input type="checkbox" name="activities" value="الذكاء الاصطناعي" /> الذكاء الاصطناعي
                   </label>
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="الفنون" /> الفنون
+                    <input type="checkbox" name="activities" value="التصوير و المونتاج" /> التصوير و المونتاج
                   </label>
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="التكنولوجيا" /> التكنولوجيا
+                    <input type="checkbox" name="activities" value="القرآن الكريم" /> القرآن الكريم
                   </label>
                   <label class="checkbox-label">
-                    <input type="checkbox" name="interest" value="التطوع" /> التطوع والعمل الخيري
+                    <input type="checkbox" name="activities" value="الرياضة" /> الرياضة
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="الرسم" /> الرسم
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="الألعاب و المنافسات" /> الألعاب و المنافسات
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="العلوم" /> العلوم
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="المهنة من المستقبل" /> المهنة من المستقبل
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="اللغات" /> اللغات
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="التنشيط و الإلقاء و التحدث أمام الجمهور" /> التنشيط و الإلقاء و التحدث أمام الجمهور
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="التعليق الصوتي" /> التعليق الصوتي
+                  </label>
+                  <label class="checkbox-label">
+                    <input type="checkbox" name="activities" value="أخرى" /> أخرى:
+                    <input type="text" name="activities-other" placeholder="حدد النشاط الآخر" />
                   </label>
                 </div>
-                <span class="error-message" id="error-interest"></span>
+                <span class="error-message" id="error-activities"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="skills">ما هي المهارات و المواهب التي تمتلكها؟ <span class="required">*</span></label>
+                <textarea id="skills" name="skills" rows="4" required placeholder="أكتب مهاراتك ومواهبك هنا..."></textarea>
+                <span class="error-message" id="error-skills"></span>
               </div>
             </div>
 
-            <!-- Section 3: Additional Info -->
-            <div class="form-section" id="section-3">
-              <h2 class="form-section-title">معلومات إضافية</h2>
-              <p class="form-section-desc">معلومات إضافية تساعدنا في معرفة المزيد عنك.</p>
+            <!-- Section 4: Suggestions & Confirmation -->
+            <div class="form-section" id="section-4">
+              <h2 class="form-section-title">الرسالة والإ confirmation</h2>
+              <p class="form-section-desc">أضف اقتراحاتك وتأكيد استعدادك للانضمام.</p>
 
               <div class="form-group">
-                <label for="motivation">لماذا ترغب في الانضمام للنادي؟</label>
-                <textarea id="motivation" name="motivation" rows="4" placeholder="أكتب أسباب رغبتك في الانضمام للنادي..."></textarea>
+                <label for="suggestions">اقتراحاتك للنادي <span class="required">*</span></label>
+                <textarea id="suggestions" name="suggestions" rows="4" required placeholder="أكتب اقتراحاتك للنادي هنا..."></textarea>
+                <span class="error-message" id="error-suggestions"></span>
               </div>
 
               <div class="form-group">
-                <label for="skills">المهارات التي تمتلكها</label>
-                <textarea id="skills" name="skills" rows="3" placeholder="مثل: التصميم، البرمجة، القيادة، التنظيم..."></textarea>
+                <fieldset>
+                  <legend>هل أنت مستعد للانضمام <span class="required">*</span></legend>
+                  <div class="radio-group">
+                    <label class="radio-label">
+                      <input type="radio" name="ready-to-join" value="أكيد" required /> أكيد
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="ready-to-join" value="لدي بعض الأسئلة" /> لدي بعض الأسئلة
+                    </label>
+                    <label class="radio-label">
+                      <input type="radio" name="ready-to-join" value="أخرى" /> أخرى:
+                    </label>
+                  </div>
+                </fieldset>
+                <span class="error-message" id="error-ready"></span>
               </div>
 
-              <div class="form-group terms-group">
-                <input type="checkbox" id="terms" name="terms" required />
-                <label for="terms">أوافق على سياسة الخصوصية وشروط الانضمام للنادي <span class="required">*</span></label>
-                <span class="error-message" id="error-terms"></span>
+              <div class="form-group">
+                <label for="message">رسالتك للنادي <span class="required">*</span></label>
+                <textarea id="message" name="message" rows="4" required placeholder="أكتب رسالتك للنادي هنا..."></textarea>
+                <span class="error-message" id="error-message"></span>
               </div>
 
               <div class="form-actions">
@@ -190,8 +310,8 @@
           <!-- Success Message -->
           <div class="form-success" id="form-success" style="display:none;">
             <div class="success-icon">✓</div>
-            <h2 class="success-title">تم إرسال تسجيلك بنجاح!</h2>
-            <p class="success-desc">شكراً لانضمامك لنادي متعدد المجالات. سنقوم بمراجعة تسجيلك والتواصل معك قريباً عبر البريد الإلكتروني أو الهاتف.</p>
+            <h2 class="success-title">تم إرسال استمارة تسجيلك بنجاح!</h2>
+            <p class="success-desc">شكراً لانضمامك إلى نادي ARIS. سنقوم بمراجعة استمارتك والتواصل معك قريباً عبر البريد الإلكتروني أو الهاتف.</p>
             <a href="index.html" class="btn btn-primary">العودة للصفحة الرئيسية</a>
           </div>
         </form>
@@ -203,11 +323,11 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <span class="logo-mark">ن</span>
-        <span class="logo-text">نادي متعدد المجالات</span>
-        <p class="footer-tagline">المدرسة العليا للأساتذة ملحقة سوڨر تيارت - نادي طلابي متعدد التخصصات والمجالات.</p>
+        <span class="logo-text">نادي ARIS</span>
+        <p class="footer-tagline">نادي ARIS - نادي متعدد المجالات للطلاب والمهتمين.</p>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copyright">© 2024 نادي متعدد المجالات - المدرسة العليا للأساتذة ملحقة سوڨر تيارت. جميع الحقوق محفوظة.</p>
+        <p class="footer-copyright">© 2024 نادي ARIS. جميع الحقوق محفوظة.</p>
       </div>
     </div>
   </footer>
