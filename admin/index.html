@@ -150,11 +150,12 @@
       background: var(--color-background);
       border: 2px solid var(--color-border);
       border-radius: var(--radius-md);
-      overflow: hidden;
+      overflow-x: auto;
     }
 
     .admin-table {
       width: 100%;
+      min-width: 900px;
       border-collapse: collapse;
     }
 
@@ -358,12 +359,14 @@
               <thead>
                 <tr>
                   <th>الاسم</th>
-                  <td>البريد الإلكتروني</td>
-                  <td>التخصص</td>
-                  <td>السنة الدراسية</td>
-                  <td>تاريخ التسجيل</td>
-                  <td>الحالة</td>
-                  <td>الإجراءات</td>
+                  <th>البريد الإلكتروني</th>
+                  <th>الهاتف</th>
+                  <th>التخصص</th>
+                  <th>الفوج</th>
+                  <th>الفريق</th>
+                  <th>تاريخ التسجيل</th>
+                  <th>الحالة</th>
+                  <th>الإجراءات</th>
                 </tr>
               </thead>
               <tbody id="submissions-table-body">
@@ -428,15 +431,19 @@
       emptyState.style.display = 'none';
       tbody.innerHTML = '';
 
-      submissions.slice().reverse().forEach((sub, index) => {
+      submissions.slice().reverse().forEach((sub, reversedIndex) => {
+        // Map the reversed display order back to the real storage index
+        const index = submissions.length - 1 - reversedIndex;
         const row = document.createElement('tr');
         const statusClass = 'status-' + sub.status;
         row.innerHTML = `
           <td><strong>${escapeHtml(sub.fullName)}</strong></td>
           <td>${escapeHtml(sub.email)}</td>
-          <td>${escapeHtml(sub.department)}</td>
-          <td>${escapeHtml(sub.year)}</td>
-          <td>${sub.date}</td>
+          <td>${escapeHtml(sub.phone)}</td>
+          <td>${escapeHtml(sub.specialization)}</td>
+          <td>${escapeHtml(sub.cohort)}</td>
+          <td>${escapeHtml(sub.team)}</td>
+          <td>${escapeHtml(sub.date)}</td>
           <td><span class="status-badge ${statusClass}">${getStatusLabel(sub.status)}</span></td>
           <td>
             <button class="btn btn-sm btn-outline" onclick="changeStatus(${index}, 'pending')">معلق</button>
@@ -450,8 +457,9 @@
     }
 
     function escapeHtml(text) {
+      if (text === null || text === undefined) return '';
       const div = document.createElement('div');
-      div.textContent = text;
+      div.textContent = Array.isArray(text) ? text.join('، ') : String(text);
       return div.innerHTML;
     }
 
