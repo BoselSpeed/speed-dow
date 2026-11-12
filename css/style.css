@@ -178,18 +178,18 @@ p { margin-bottom: var(--space-md); }
 }
 
 .logo-mark {
-  font-size: 2rem;
+  font-size: 1.25rem;
   line-height: 1;
   background: var(--color-white);
   color: var(--color-primary);
-  width: 44px;
-  height: 44px;
+  padding: var(--space-xs) var(--space-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
   font-weight: var(--fw-bold);
   border: 2px solid var(--color-accent);
+  white-space: nowrap;
 }
 
 .main-nav .nav-list {
@@ -636,6 +636,20 @@ p { margin-bottom: var(--space-md); }
   margin-bottom: var(--space-md);
 }
 
+.footer-brand .logo-mark {
+  font-size: 1.25rem;
+  background: var(--color-white);
+  color: var(--color-primary);
+  padding: var(--space-xs) var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-bold);
+  border: 2px solid var(--color-accent);
+  white-space: nowrap;
+}
+
 .footer-tagline {
   color: rgba(255, 255, 255, 0.8);
   font-size: 0.9rem;
@@ -731,17 +745,17 @@ p { margin-bottom: var(--space-md); }
 }
 
 .form-brand .logo-mark {
-  font-size: 2rem;
+  font-size: 1.25rem;
   background: var(--color-white);
   color: var(--color-primary);
-  width: 44px;
-  height: 44px;
+  padding: var(--space-xs) var(--space-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
   font-weight: var(--fw-bold);
   border: 2px solid var(--color-accent);
+  white-space: nowrap;
 }
 
 .form-title {
